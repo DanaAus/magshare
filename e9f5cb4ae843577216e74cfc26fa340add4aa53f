@@ -1,0 +1,10 @@
+Task: Win32 API Integration
+
+Summary: Implemented core lock detection logic using Windows Restart Manager API and recursive directory scanning.
+
+Modified Files:
+- src/locker.rs (New: Restart Manager wrapper, recursive logic, unit tests)
+- src/main.rs (Added mod locker)
+- Cargo.toml (Added walkdir dependency)
+
+Why: This provides the essential functionality of identifying which processes are locking a file or directory, supporting the primary mission of the tool.
