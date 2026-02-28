@@ -1,0 +1,10 @@
+Task: CLI & Interaction
+
+Summary: Implemented the CLI interface, process information retrieval, and interactive user prompts.
+
+Modified Files:
+- src/cli.rs (New: clap parser definition)
+- src/ui.rs (New: sysinfo integration, tabular printing, inquire selection)
+- src/main.rs (Wired up CLI and UI modules)
+
+Why: This allows users to actually interact with the tool, see which processes are locking their files, and choose which ones to target.
