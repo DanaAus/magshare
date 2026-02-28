@@ -12,13 +12,13 @@
     - [x] Implement recursive file/folder scanner
 - [x] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md) [90d2613]
 
-## Phase 3: CLI & Interaction
+## Phase 3: CLI & Interaction [checkpoint: b6f91a0]
 - [x] Task: Argument Parsing & Basic CLI [33a2163]
     - [x] Implement CLI interface using clap (e.g., 'unlock <path>')
     - [x] Implement tabular process listing
 - [x] Task: Interactive Selection [33a2163]
     - [x] Implement inquire prompts for selection and confirmation
-- [ ] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md) [b6f91a0]
 
 ## Phase 4: Termination & Safety
 - [ ] Task: Process Kill Implementation
