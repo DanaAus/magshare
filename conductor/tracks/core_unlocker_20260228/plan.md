@@ -13,11 +13,11 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md) [90d2613]
 
 ## Phase 3: CLI & Interaction
-- [ ] Task: Argument Parsing & Basic CLI
-    - [ ] Implement CLI interface using clap (e.g., 'unlock <path>')
-    - [ ] Implement tabular process listing
-- [ ] Task: Interactive Selection
-    - [ ] Implement inquire prompts for selection and confirmation
+- [x] Task: Argument Parsing & Basic CLI [33a2163]
+    - [x] Implement CLI interface using clap (e.g., 'unlock <path>')
+    - [x] Implement tabular process listing
+- [x] Task: Interactive Selection [33a2163]
+    - [x] Implement inquire prompts for selection and confirmation
 - [ ] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)
 
 ## Phase 4: Termination & Safety
