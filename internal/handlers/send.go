@@ -109,6 +109,7 @@ func ServeFileWithProgress(w http.ResponseWriter, r *http.Request, filePath stri
 	}
 
 	bar := ui.NewProgressBar(info.Size(), "Sending "+info.Name())
+	defer bar.Finish()
 	pw := &progressResponseWriter{
 		ResponseWriter: w,
 		bar:            bar,

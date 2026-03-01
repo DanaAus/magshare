@@ -110,6 +110,7 @@ func ReceiveFileWithProgress(w http.ResponseWriter, r *http.Request, destDir str
 	// 1. Wrap Body for Progress
 	contentLength := r.ContentLength
 	bar := uiHelper.NewProgressBar(contentLength, "Receiving Upload")
+	defer bar.Finish()
 	// Use NewProxyReader to wrap body
 	// Since r.Body is a ReadCloser, and NewReader returns Reader, we wrap with NopCloser
 	proxyReader := progressbar.NewReader(r.Body, bar)
