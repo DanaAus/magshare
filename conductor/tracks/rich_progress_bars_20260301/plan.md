@@ -17,6 +17,6 @@
 - [x] Task: Conductor - User Manual Verification 'Implementation in Receive Mode' (Protocol in workflow.md) [cedbba5]
 
 ## Phase 4: Final Polishing and Verification
-- [x] Task: Ensure progress bar cleanup on server shutdown or transfer completion [HASH_PLACEHOLDER]
+- [x] Task: Ensure progress bar cleanup on server shutdown or transfer completion [8804dc6]
 - [~] Task: Final end-to-end testing with large files
 - [ ] Task: Conductor - User Manual Verification 'Final Polishing and Verification' (Protocol in workflow.md)
