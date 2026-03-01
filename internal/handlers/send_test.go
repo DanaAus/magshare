@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"os"
+	"path/filepath"
 	"testing"
 )
 
@@ -49,5 +50,51 @@ func TestServeFileWithProgress(t *testing.T) {
 	if rr.Body.String() != string(content) {
 		t.Errorf("handler returned unexpected body: got %v want %v",
 			rr.Body.String(), string(content))
+	}
+}
+
+func TestServeDirWithProgress(t *testing.T) {
+	// Create a dummy dir
+	tmpdir, err := os.MkdirTemp("", "example_dir")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer os.RemoveAll(tmpdir)
+
+	// Create a file inside
+	content := []byte("Hello, zip!")
+	err = os.WriteFile(filepath.Join(tmpdir, "hello.txt"), content, 0644)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	// Request
+	req, err := http.NewRequest("GET", "/download", nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	rr := httptest.NewRecorder()
+
+	handler := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		ServeDirWithProgress(w, r, tmpdir)
+	})
+
+	handler.ServeHTTP(rr, req)
+
+	// Check status
+	if status := rr.Code; status != http.StatusOK {
+		t.Errorf("handler returned wrong status code: got %v want %v",
+			status, http.StatusOK)
+	}
+
+	// Check content type
+	if ctype := rr.Header().Get("Content-Type"); ctype != "application/zip" {
+		t.Errorf("content type mismatch: got %v want application/zip", ctype)
+	}
+
+	// Check body size > 0
+	if rr.Body.Len() == 0 {
+		t.Errorf("response body is empty")
 	}
 }

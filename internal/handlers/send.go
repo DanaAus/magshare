@@ -69,45 +69,8 @@ func StartSendServer(targetPath string, secure bool) error {
 		fmt.Printf("\n[Server] Connection established from %s\n", r.RemoteAddr)
 
 		if info.IsDir() {
-			// Stream folder as ZIP
-			w.Header().Set("Content-Type", "application/zip")
-			w.Header().Set("Content-Disposition", fmt.Sprintf(`attachment; filename="%s.zip"`, info.Name()))
-
-			zipWriter := zip.NewWriter(w)
-			defer zipWriter.Close()
-
-			err := filepath.Walk(targetPath, func(path string, fileInfo os.FileInfo, err error) error {
-				if err != nil {
-					return err
-				}
-
-				if fileInfo.IsDir() {
-					return nil
-				}
-
-				relPath, err := filepath.Rel(targetPath, path)
-				if err != nil {
-					return err
-				}
-
-				zipFile, err := zipWriter.Create(filepath.ToSlash(relPath))
-				if err != nil {
-					return err
-				}
-
-				file, err := os.Open(path)
-				if err != nil {
-					return err
-				}
-				defer file.Close()
-
-				_, err = io.Copy(zipFile, file)
-				return err
-			})
-
-			if err != nil {
-				fmt.Printf("[Error] Failed to stream ZIP: %v\n", err)
-			}
+			// Stream folder as ZIP with progress spinner
+			ServeDirWithProgress(w, r, targetPath)
 		} else {
 			// Serve a single file with progress bar
 			ServeFileWithProgress(w, r, targetPath)
@@ -153,4 +116,58 @@ func ServeFileWithProgress(w http.ResponseWriter, r *http.Request, filePath stri
 
 	w.Header().Set("Content-Disposition", fmt.Sprintf(`attachment; filename="%s"`, info.Name()))
 	http.ServeFile(pw, r, filePath)
+}
+
+// ServeDirWithProgress serves a directory as a ZIP stream with a progress spinner.
+func ServeDirWithProgress(w http.ResponseWriter, r *http.Request, dirPath string) {
+	info, err := os.Stat(dirPath)
+	if err != nil {
+		http.NotFound(w, r)
+		return
+	}
+
+	bar := ui.NewIndeterminateProgressBar("Archiving and Sending " + info.Name())
+	pw := &progressResponseWriter{
+		ResponseWriter: w,
+		bar:            bar,
+	}
+
+	pw.Header().Set("Content-Type", "application/zip")
+	pw.Header().Set("Content-Disposition", fmt.Sprintf(`attachment; filename="%s.zip"`, info.Name()))
+
+	zipWriter := zip.NewWriter(pw)
+	defer zipWriter.Close()
+
+	err = filepath.Walk(dirPath, func(path string, fileInfo os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+
+		if fileInfo.IsDir() {
+			return nil
+		}
+
+		relPath, err := filepath.Rel(dirPath, path)
+		if err != nil {
+			return err
+		}
+
+		zipFile, err := zipWriter.Create(filepath.ToSlash(relPath))
+		if err != nil {
+			return err
+		}
+
+		file, err := os.Open(path)
+		if err != nil {
+			return err
+		}
+		defer file.Close()
+
+		_, err = io.Copy(zipFile, file)
+		return err
+	})
+
+	if err != nil {
+		fmt.Printf("[Error] Failed to stream ZIP: %v\n", err)
+	}
 }
