@@ -5,14 +5,14 @@
 - [x] Task: Create helper functions for progress bar initialization in internal/ui/progress.go [87ee685]
 - [x] Task: Conductor - User Manual Verification 'Setup and Infrastructure' (Protocol in workflow.md) [72be18b]
 
-## Phase 2: Implementation in Send Mode
+## Phase 2: Implementation in Send Mode [checkpoint: 0bf234a]
 - [x] Task: Write Tests for progress bar integration in internal/handlers/send.go [4a640db]
 - [x] Task: Implement progress bar in StartSendServer for single files [44956e7]
 - [x] Task: Implement progress bar in StartSendServer for directory (ZIP) transfers [f04193c]
-- [~] Task: Conductor - User Manual Verification 'Implementation in Send Mode' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Implementation in Send Mode' (Protocol in workflow.md) [0bf234a]
 
 ## Phase 3: Implementation in Receive Mode
-- [ ] Task: Write Tests for progress bar integration in internal/handlers/receive.go
+- [~] Task: Write Tests for progress bar integration in internal/handlers/receive.go
 - [ ] Task: Implement progress bar in StartReceiveServer for received files
 - [ ] Task: Conductor - User Manual Verification 'Implementation in Receive Mode' (Protocol in workflow.md)
 
