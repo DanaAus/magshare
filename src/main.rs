@@ -1,6 +1,8 @@
 mod locker;
 mod cli;
 mod ui;
+mod killer;
+mod logger;
 
 use clap::Parser;
 use cli::Cli;
@@ -27,12 +29,48 @@ fn main() {
     let details = ui::get_process_details(&pids);
     ui::print_process_table(&details);
 
-    if cli.force {
-        println!("{}", "Force kill enabled. Terminating all locking processes...".red().bold());
-        // TODO: Implement kill logic in Phase 4
+    let to_kill = if cli.force {
+        println!("{}", "Force kill enabled. Targeting all locking processes...".red().bold());
+        pids
     } else {
-        let _to_kill = ui::select_processes_to_kill(&details);
-        // TODO: Implement kill logic in Phase 4
+        ui::select_processes_to_kill(&details)
+    };
+
+    if to_kill.is_empty() {
+        println!("{}", "No processes selected for termination.".yellow());
+        return;
+    }
+
+    logger::log_action(&format!("Scan complete for {:?}. Found {} processes.", cli.path, details.len()));
+
+    for pid in to_kill {
+        let detail = details.iter().find(|d| d.pid == pid);
+        let name = detail.map(|d| d.name.as_str()).unwrap_or("Unknown");
+
+        if killer::is_critical_process(name) {
+            println!("{} Process {} ({}) is a critical system process!", "Warning:".yellow().bold(), name, pid);
+            let confirm = inquire::Confirm::new("Are you absolutely sure you want to terminate it?")
+                .with_default(false)
+                .prompt();
+            
+            if let Ok(false) | Err(_) = confirm {
+                println!("Skipping critical process {} ({}).", name, pid);
+                logger::log_action(&format!("Skipped critical process {} ({})", name, pid));
+                continue;
+            }
+        }
+
+        println!("{} Terminating process {} ({})...", "Action:".magenta().bold(), name, pid);
+        match killer::kill_process(pid, cli.force) {
+            Ok(_) => {
+                println!("{} Successfully terminated {} ({}).", "Success:".green(), name, pid);
+                logger::log_action(&format!("Terminated process {} ({})", name, pid));
+            }
+            Err(e) => {
+                eprintln!("{} Failed to terminate {} ({}): {}", "Error:".red(), name, pid, e);
+                logger::log_action(&format!("Failed to terminate process {} ({}): {}", name, pid, e));
+            }
+        }
     }
 }
 
