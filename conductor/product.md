@@ -12,6 +12,7 @@ Bridging the gap between diverse devices on the same network (e.g., PC to mobile
 
 ## Key Features
 - **QR Generation:** Instantly display access URLs as QR codes in the terminal.
+- **Real-time Progress Tracking:** Provide visual feedback with progress bars and transfer speeds.
 - **WebSocket Support:** Enable fast, efficient, and bidirectional data streaming.
 - **Web Dropzone:** A lightweight, browser-based UI for receiving files on any device.
 - **Relay Support (Future):** Planned support for devices on different networks through relay servers.
