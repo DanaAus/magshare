@@ -11,8 +11,10 @@ import (
 
 	"qshare/internal/network"
 	"qshare/internal/server"
+	"qshare/internal/ui"
 
 	"github.com/mdp/qrterminal/v3"
+	"github.com/schollz/progressbar/v3"
 )
 
 // StartSendServer initializes the ephemeral server and handles file sending.
@@ -107,9 +109,8 @@ func StartSendServer(targetPath string, secure bool) error {
 				fmt.Printf("[Error] Failed to stream ZIP: %v\n", err)
 			}
 		} else {
-			// Serve a single file
-			w.Header().Set("Content-Disposition", fmt.Sprintf(`attachment; filename="%s"`, info.Name()))
-			http.ServeFile(w, r, targetPath)
+			// Serve a single file with progress bar
+			ServeFileWithProgress(w, r, targetPath)
 		}
 
 		// Shutdown after transfer
@@ -125,7 +126,31 @@ func StartSendServer(targetPath string, secure bool) error {
 	return srv.Start(5 * time.Minute)
 }
 
+type progressResponseWriter struct {
+	http.ResponseWriter
+	bar *progressbar.ProgressBar
+}
+
+func (w *progressResponseWriter) Write(p []byte) (int, error) {
+	n, err := w.ResponseWriter.Write(p)
+	w.bar.Add(n)
+	return n, err
+}
+
 // ServeFileWithProgress serves a single file with a progress bar.
 func ServeFileWithProgress(w http.ResponseWriter, r *http.Request, filePath string) {
-	http.Error(w, "Not implemented", http.StatusNotImplemented)
+	info, err := os.Stat(filePath)
+	if err != nil {
+		http.NotFound(w, r)
+		return
+	}
+
+	bar := ui.NewProgressBar(info.Size(), "Sending "+info.Name())
+	pw := &progressResponseWriter{
+		ResponseWriter: w,
+		bar:            bar,
+	}
+
+	w.Header().Set("Content-Disposition", fmt.Sprintf(`attachment; filename="%s"`, info.Name()))
+	http.ServeFile(pw, r, filePath)
 }
