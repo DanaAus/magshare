@@ -1,0 +1,11 @@
+Task: Phase 4: Termination & Safety
+
+Summary: Implemented process termination logic with Win32 API and taskkill fallback, added system-process protection, and a local audit logging system.
+
+Modified Files:
+- src/killer.rs (New: termination logic, system process check)
+- src/logger.rs (New: local file logger)
+- src/main.rs (Wired up termination and logging)
+- Cargo.toml (Added chrono dependency)
+
+Why: This completes the core utility of the tool by allowing users to actually resolve file locks and keep a record of actions taken.
