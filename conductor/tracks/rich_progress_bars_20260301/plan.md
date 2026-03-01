@@ -8,8 +8,8 @@
 ## Phase 2: Implementation in Send Mode
 - [x] Task: Write Tests for progress bar integration in internal/handlers/send.go [4a640db]
 - [x] Task: Implement progress bar in StartSendServer for single files [44956e7]
-- [~] Task: Implement progress bar in StartSendServer for directory (ZIP) transfers
-- [ ] Task: Conductor - User Manual Verification 'Implementation in Send Mode' (Protocol in workflow.md)
+- [x] Task: Implement progress bar in StartSendServer for directory (ZIP) transfers [f04193c]
+- [~] Task: Conductor - User Manual Verification 'Implementation in Send Mode' (Protocol in workflow.md)
 
 ## Phase 3: Implementation in Receive Mode
 - [ ] Task: Write Tests for progress bar integration in internal/handlers/receive.go
