@@ -1,27 +1,21 @@
-# Product Guidelines: FileInBreach CLI
+# Product Guidelines
 
-## Communication Style
-- **Direct and Efficient:** All output should be concise and focused on the task at hand. Avoid verbose explanations and prioritize high-signal information for power users.
-- **Immediate Feedback:** Provide instant visual confirmation for every user action and detection result.
-
-## Branding and Visual Identity (CLI)
-- **Modern Tech-Forward:** Utilize ANSI colors to clearly differentiate between information, warnings, and errors.
-  - **Info:** Cyan/Blue
-  - **Success:** Green
-  - **Warning:** Yellow
-  - **Error:** Red
-- **ANSI Styling:** Use bold and underlined text sparingly to highlight critical data points like Process IDs (PIDs) or file paths.
-
-## User Interface and Visual Language
-- **Tabular Data Display:** Process lists and lock information should be presented in well-aligned tables for quick scanning.
-- **Hierarchical Process Trees:** When multiple processes are involved, display them in a tree structure to show parent-child relationships.
-- **Streamlined Action Logs:** Provide a clean, timestamped log of all actions performed during the session.
+## Brand & Voice
+- **Voice:** Professional, clear, and action-oriented.
+- **Tone:** Minimalist and helpful. Avoid overly technical jargon when communicating with the user.
+- **Brand Essence:** Instant, reliable, and transparent.
 
 ## User Experience (UX) Principles
-- **Safety-First Design:** Mandatory confirmations are required before any process is terminated. The user must always have the final say.
-- **Predictability:** The tool should follow a consistent interaction pattern: Scan -> Identify -> Confirm -> Resolve.
-- **Transparency:** Clearly communicate why a process is being targeted and what the potential impact of killing it might be (especially for system processes).
+- **Frictionless Entry:** The core action (sharing a file) should be possible with a single command.
+- **Visual Feedback:** Provide clear, real-time status updates (e.g., progress bars, success/failure messages).
+- **Graceful Failure:** Handle network interruptions or permission issues with helpful error messages.
+- **Consistent Design:** The web dropzone and terminal output should share a consistent, minimal aesthetic.
 
-## Performance Targets
-- **Initial Scan:** Detection of locking processes should be near-instantaneous (under 100ms for single files).
-- **Responsive Interface:** The UI should remain responsive and provide visual feedback even during recursive directory scans.
+## Interaction Design
+- **Command Defaults:** Use sensible defaults to minimize the need for flags.
+- **Terminal Aesthetics:** Use color and formatting to enhance readability without being distracting.
+- **Mobile Friendliness:** The web dropzone must be fully responsive and touch-optimized.
+
+## Product Documentation
+- **Clear Instructions:** Ensure all commands are documented with examples in the CLI --help output.
+- **Maintainable Code:** Write clean, idiomatic Go code that is easy for others to contribute to.

@@ -1,25 +1,21 @@
-# Technology Stack: FileInBreach CLI
+# Tech Stack
 
-## Core Languages
-- **Rust:** The primary language for the tool, chosen for its safety, performance, and excellent Windows API interoperability.
+## Programming Language
+- **Go (v1.25.0):** The primary language for its performance, simplicity, and excellent concurrency support.
 
-## Windows API & System Libraries
-- windows-rs (Official Windows Crate): Used for direct interaction with the Windows Win32 and Restart Manager APIs for detecting file locks.
-- sysinfo: For retrieving process information, names, and memory usage.
-- winapi / windows-sys: As fallback for low-level system calls if required by specific lock detection scenarios.
-- walkdir: For efficient recursive directory scanning.
+## CLI Framework
+- **Cobra (spf13/cobra):** A robust framework for creating CLI applications with support for commands and flags.
 
-## CLI & User Interface
-- clap (Command Line Argument Parser): The robust framework for handling CLI flags, subcommands, and generating help documentation.
-- inquire: For creating the interactive prompts and selection menus requested in the UX guidelines.   
-- indicatif: To provide progress bars and spinners during long-running recursive directory scans.     
-- colored or console: For ANSI color support to meet the tech-forward branding requirements.
-- chrono: For generating accurate timestamps in the audit logs.
+## Networking & Webhooks
+- **Gorilla WebSocket (gorilla/websocket):** A reliable WebSocket implementation for real-time, bidirectional data transfers.
 
-## Build & Distribution
-- **Cargo:** Rust's built-in package manager and build system.
-- **Static Linking:** All dependencies will be statically linked into a single, portable .exe binary for easy distribution on Windows systems.
+## Terminal User Interface
+- **QR Terminal (mdp/qrterminal/v3):** For generating and displaying QR codes directly in the terminal.
+- **Colorstring (mitchellh/colorstring):** To simplify terminal colorization and formatting.
+- **Progressbar (schollz/progressbar/v3):** For displaying real-time progress for file transfers.
 
-## Testing & Quality Assurance
-- **	okio (Optional):** For asynchronous operations if multiple concurrent scans are required.
-- **Standard Rust Test Suite:** For unit and integration testing.
+## File & System Monitoring
+- **fsnotify (fsnotify/fsnotify):** Cross-platform file system notifications for tracking file changes.
+
+## Web Interface
+- **Embedded HTML (ui/dropzone.html):** A minimal, responsive web-based UI for receiving files, served directly from the application.
