@@ -16,7 +16,7 @@
 - [x] Task: Implement progress bar in StartReceiveServer for received files [384bf63]
 - [x] Task: Conductor - User Manual Verification 'Implementation in Receive Mode' (Protocol in workflow.md) [cedbba5]
 
-## Phase 4: Final Polishing and Verification
+## Phase 4: Final Polishing and Verification [checkpoint: c0ef37a]
 - [x] Task: Ensure progress bar cleanup on server shutdown or transfer completion [8804dc6]
 - [x] Task: Final end-to-end testing with large files [MANUAL_VERIFICATION]
-- [~] Task: Conductor - User Manual Verification 'Final Polishing and Verification' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Final Polishing and Verification' (Protocol in workflow.md) [c0ef37a]
