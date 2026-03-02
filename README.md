@@ -3,7 +3,6 @@
 # 🚀 QShare
 
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Go Report Card](https://goreportcard.com/badge/github.com/DanaAus/qshare)](https://goreportcard.com/report/github.com/DanaAus/qshare)
 
 **Instant, frictionless file sharing and receiving across your local network via CLI.**
