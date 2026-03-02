@@ -1,0 +1,6 @@
+Task: Create a separate 'interactive' package for UI logic
+Summary: Created internal/ui/interactive.go with a basic MainActionForm and added a corresponding unit test.
+Files:
+- internal/ui/interactive.go
+- internal/ui/interactive_test.go
+Why: To centralize interactive prompt definitions and ensure they are testable independently of the CLI root command.
