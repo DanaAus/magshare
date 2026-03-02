@@ -1,6 +1,7 @@
 package ui
 
 import (
+	"errors"
 	"fmt"
 	"strconv"
 
@@ -26,7 +27,8 @@ func RunInteractivePrompts() (*InteractiveConfig, error) {
 	actionForm := huh.NewForm(
 		huh.NewGroup(
 			huh.NewSelect[string]().
-				Title("What would you like to do?").
+				Title("QShare Interactive").
+				Description("Choose what you want to do today.").
 				Options(
 					huh.NewOption("Send File/Folder", "send"),
 					huh.NewOption("Receive File", "receive"),
@@ -38,6 +40,9 @@ func RunInteractivePrompts() (*InteractiveConfig, error) {
 
 	err := actionForm.Run()
 	if err != nil {
+		if errors.Is(err, huh.ErrUserAborted) {
+			return nil, fmt.Errorf("user cancelled")
+		}
 		return nil, fmt.Errorf("action selection failed: %w", err)
 	}
 
@@ -49,8 +54,9 @@ func RunInteractivePrompts() (*InteractiveConfig, error) {
 	case "send", "sync":
 		groups = append(groups, huh.NewGroup(
 			huh.NewInput().
-				Title("File or Directory Path").
-				Placeholder("e.g., ./my-file.txt").
+				Title("Path").
+				Description("Enter the file or directory you want to share.").
+				Placeholder("./my-data").
 				Value(&cfg.Path).
 				Validate(func(s string) error {
 					if s == "" {
@@ -60,6 +66,7 @@ func RunInteractivePrompts() (*InteractiveConfig, error) {
 				}),
 			huh.NewInput().
 				Title("Port").
+				Description("The port to run the ephemeral server on.").
 				Value(&portStr).
 				Validate(func(s string) error {
 					_, err := strconv.Atoi(s)
@@ -69,14 +76,16 @@ func RunInteractivePrompts() (*InteractiveConfig, error) {
 					return nil
 				}),
 			huh.NewConfirm().
-				Title("Use Secure Mode (PIN)?").
+				Title("Secure Mode").
+				Description("Require a 4-digit PIN for access?").
 				Value(&cfg.Secure),
 		))
 	case "receive":
 		groups = append(groups, huh.NewGroup(
 			huh.NewInput().
-				Title("Destination Directory").
-				Placeholder("e.g., ./downloads").
+				Title("Destination").
+				Description("Where should received files be saved?").
+				Placeholder("./downloads").
 				Value(&cfg.Path).
 				Validate(func(s string) error {
 					if s == "" {
@@ -86,6 +95,7 @@ func RunInteractivePrompts() (*InteractiveConfig, error) {
 				}),
 			huh.NewInput().
 				Title("Port").
+				Description("The port to run the dropzone server on.").
 				Value(&portStr).
 				Validate(func(s string) error {
 					_, err := strconv.Atoi(s)
@@ -100,6 +110,9 @@ func RunInteractivePrompts() (*InteractiveConfig, error) {
 	configForm := huh.NewForm(groups...)
 	err = configForm.Run()
 	if err != nil {
+		if errors.Is(err, huh.ErrUserAborted) {
+			return nil, fmt.Errorf("user cancelled")
+		}
 		return nil, fmt.Errorf("configuration failed: %w", err)
 	}
 
@@ -108,8 +121,9 @@ func RunInteractivePrompts() (*InteractiveConfig, error) {
 		pinForm := huh.NewForm(
 			huh.NewGroup(
 				huh.NewInput().
-					Title("Set a 4-digit PIN").
-					Placeholder("e.g., 1234").
+					Title("Access PIN").
+					Description("Set a 4-digit numeric PIN.").
+					Placeholder("1234").
 					Value(&cfg.PIN).
 					Validate(func(s string) error {
 						if len(s) != 4 {
@@ -125,6 +139,9 @@ func RunInteractivePrompts() (*InteractiveConfig, error) {
 		)
 		err = pinForm.Run()
 		if err != nil {
+			if errors.Is(err, huh.ErrUserAborted) {
+				return nil, fmt.Errorf("user cancelled")
+			}
 			return nil, fmt.Errorf("PIN entry failed: %w", err)
 		}
 	}

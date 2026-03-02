@@ -18,6 +18,9 @@ var rootCmd = &cobra.Command{
 		// If no subcommand is provided, run interactive mode
 		cfg, err := ui.RunInteractivePrompts()
 		if err != nil {
+			if err.Error() == "user cancelled" {
+				return nil
+			}
 			return err
 		}
 
