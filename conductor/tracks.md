@@ -4,5 +4,5 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [ ] **Track: Package Manager Compatibility (Scoop, WinGet, Bun)**
+- [x] **Track: Package Manager Compatibility (Scoop, WinGet, Bun)**
 *Link: [./tracks/package_manager_support_20260302/](./tracks/package_manager_support_20260302/)*
