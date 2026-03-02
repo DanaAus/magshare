@@ -3,9 +3,9 @@
 This plan outlines the steps for implementing an interactive TUI for QShare using the `charmbracelet/huh` library.
 
 ## Phase 1: Setup and Prototyping
-- [ ] **Task: Update Tech Stack and Install Dependencies**
-    - [ ] Add `charmbracelet/huh` to `tech-stack.md`.
-    - [ ] Run `go get github.com/charmbracelet/huh` to add the library to the project.
+- [x] **Task: Update Tech Stack and Install Dependencies** 77a6792
+    - [x] Add `charmbracelet/huh` to `tech-stack.md`.
+    - [x] Run `go get github.com/charmbracelet/huh` to add the library to the project.
 - [ ] **Task: Create a separate 'interactive' package for UI logic**
     - [ ] Create `internal/ui/interactive.go` (or a similar location) to isolate the `huh` forms.
     - [ ] Write a test in `internal/ui/interactive_test.go` to verify the form structure (mocking input if possible).
