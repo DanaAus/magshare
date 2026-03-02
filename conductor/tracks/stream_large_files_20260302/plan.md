@@ -2,15 +2,15 @@
 
 This plan focuses on ensuring that file transfers in QShare are memory-efficient by strictly utilizing streaming for all data operations.
 
-## Phase 1: Verification and Benchmarking
-- [ ] **Task: Create a memory profiling test**
-    - [ ] Create a test that generates a large temporary file (e.g., 500MB+).
-    - [ ] Implement a test server and client that performs a transfer.
-    - [ ] Measure peak RSS memory usage during the transfer.
-- [ ] **Task: Analyze current `io.Copy` and `io.MultiWriter` performance**
-    - [ ] Investigate if `io.MultiWriter` with `progressbar/v3` causes any unexpected buffering.
-    - [ ] Verify that `os.File` is read in chunks (standard `io.Copy` behavior).
-- [ ] **Task: Conductor - User Manual Verification 'Verification and Benchmarking' (Protocol in workflow.md)**
+## Phase 1: Verification and Benchmarking [checkpoint: 258b333]
+- [x] **Task: Create a memory profiling test**
+    - [x] Create a test that generates a large temporary file (e.g., 500MB+).
+    - [x] Implement a test server and client that performs a transfer.
+    - [x] Measure peak RSS memory usage during the transfer.
+- [x] **Task: Analyze current `io.Copy` and `io.MultiWriter` performance**
+    - [x] Investigate if `io.MultiWriter` with `progressbar/v3` causes any unexpected buffering.
+    - [x] Verify that `os.File` is read in chunks (standard `io.Copy` behavior).
+- [x] **Task: Conductor - User Manual Verification 'Verification and Benchmarking' (Protocol in workflow.md)**
 
 ## Phase 2: Streaming Optimization and Robustness
 - [ ] **Task: Implement custom `io.Reader` wrapper for progress**
