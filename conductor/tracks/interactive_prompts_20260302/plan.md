@@ -13,7 +13,7 @@ This plan outlines the steps for implementing an interactive TUI for QShare usin
     - [x] Implement a `huh` Select field for Send, Receive, and Sync.
 - [x] **Task: Conductor - User Manual Verification 'Setup and Prototyping' (Protocol in workflow.md)**
 
-## Phase 2: Core Feature Implementation
+## Phase 2: Core Feature Implementation [checkpoint: 0442120]
 - [x] **Task: Implement feature-specific configuration forms** 1cd18c2
     - [x] Create sub-forms for `Send`, `Receive`, and `Sync` with appropriate fields (Path, Port, PIN, Secure).
     - [x] Add validation logic for the input fields (e.g., non-empty paths, valid port numbers).
@@ -22,7 +22,7 @@ This plan outlines the steps for implementing an interactive TUI for QShare usin
     - [x] Call the interactive prompt logic when the trigger conditions are met.
 - [x] **Task: Map Interactive Inputs to Command Logic** c64c5b1
     - [x] Ensure that once the interactive session is complete, it calls the corresponding internal handlers (e.g., `handlers.StartSendServer`).
-- [ ] **Task: Conductor - User Manual Verification 'Core Feature Implementation' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Core Feature Implementation' (Protocol in workflow.md)**
 
 ## Phase 3: Refinement and Polishing
 - [ ] **Task: Refine UI and Error Handling**
