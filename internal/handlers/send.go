@@ -3,6 +3,7 @@ package handlers
 import (
 	"archive/zip"
 	"fmt"
+	"html/template"
 	"io"
 	"net/http"
 	"os"
@@ -11,6 +12,7 @@ import (
 
 	"qshare/internal/network"
 	"qshare/internal/server"
+	"qshare/ui"
 
 	"github.com/mdp/qrterminal/v3"
 	"github.com/schollz/progressbar/v3"
@@ -82,11 +84,24 @@ func StartSendServer(targetPath string, opts SendOptions) error {
 
 		// Check PIN if secure mode is enabled
 		if opts.Secure {
-			// For downloads, we might want to check a query param or a cookie
-			// For simplicity, let's check a query param "pin"
 			clientPin := r.URL.Query().Get("pin")
 			if clientPin != opts.PIN {
-				http.Error(w, "Invalid PIN", http.StatusUnauthorized)
+				// Serve PIN entry page instead of raw error
+				tmpl, err := template.ParseFS(ui.Files, "pin.html")
+				if err != nil {
+					http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+					return
+				}
+
+				data := struct {
+					Error string
+				}{}
+				if clientPin != "" {
+					data.Error = "Invalid PIN. Please try again."
+				}
+
+				w.Header().Set("Content-Type", "text/html")
+				tmpl.Execute(w, data)
 				return
 			}
 		}

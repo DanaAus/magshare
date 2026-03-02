@@ -39,9 +39,6 @@ var rootCmd = &cobra.Command{
 				PIN:    cfg.PIN,
 			}
 			return handlers.StartReceiveServer(cfg.Path, opts)
-		case "sync":
-			fmt.Println("Sync mode not yet fully implemented in this prototype.")
-			return nil
 		default:
 			return cmd.Help()
 		}

@@ -1,0 +1,22 @@
+# WinGet Manifest Template
+PackageIdentifier: DanaAus.QShare
+PackageVersion: 0.1.0
+PackageName: QShare
+Publisher: DanaAus
+License: MIT
+ShortDescription: Instant local network file sharing with QR codes.
+Moniker: qshare
+Tags:
+  - file-sharing
+  - network
+  - qr-code
+  - terminal
+  - cli
+Installers:
+  - Architecture: x64
+    InstallerType: portable
+    InstallerUrl: https://github.com/DanaAus/qshare/releases/download/v0.1.0/qshare-v0.1.0-windows-amd64.zip
+    InstallerSha256: REPLACE_WITH_ACTUAL_SHA256
+    UpgradeBehavior: install
+ManifestType: singleton
+ManifestVersion: 1.2.0

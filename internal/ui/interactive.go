@@ -32,7 +32,6 @@ func RunInteractivePrompts() (*InteractiveConfig, error) {
 				Options(
 					huh.NewOption("Send File/Folder", "send"),
 					huh.NewOption("Receive File", "receive"),
-					huh.NewOption("Sync Mode", "sync"),
 				).
 				Value(&cfg.Action),
 		),
@@ -51,7 +50,7 @@ func RunInteractivePrompts() (*InteractiveConfig, error) {
 	var groups []*huh.Group
 
 	switch cfg.Action {
-	case "send", "sync":
+	case "send":
 		groups = append(groups, huh.NewGroup(
 			huh.NewInput().
 				Title("Path").
@@ -104,6 +103,10 @@ func RunInteractivePrompts() (*InteractiveConfig, error) {
 					}
 					return nil
 				}),
+			huh.NewConfirm().
+				Title("Secure Mode").
+				Description("Require a 4-digit PIN for access?").
+				Value(&cfg.Secure),
 		))
 	}
 
@@ -117,7 +120,7 @@ func RunInteractivePrompts() (*InteractiveConfig, error) {
 	}
 
 	// Optional PIN prompt if Secure is true
-	if cfg.Secure && (cfg.Action == "send" || cfg.Action == "sync") {
+	if cfg.Secure {
 		pinForm := huh.NewForm(
 			huh.NewGroup(
 				huh.NewInput().

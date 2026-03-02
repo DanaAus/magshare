@@ -1,0 +1,21 @@
+{
+    "version": "0.1.0",
+    "description": "Instant, frictionless file sharing across a local network with QR codes.",
+    "homepage": "https://github.com/DanaAus/qshare",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/DanaAus/qshare/releases/download/v0.1.0/qshare-v0.1.0-windows-amd64.zip",
+            "hash": "REPLACE_WITH_ACTUAL_HASH"
+        }
+    },
+    "bin": "qshare.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/DanaAus/qshare/releases/download/v$version/qshare-v$version-windows-amd64.zip"
+            }
+        }
+    }
+}
