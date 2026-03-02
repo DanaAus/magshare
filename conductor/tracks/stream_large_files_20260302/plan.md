@@ -12,15 +12,15 @@ This plan focuses on ensuring that file transfers in QShare are memory-efficient
     - [x] Verify that `os.File` is read in chunks (standard `io.Copy` behavior).
 - [x] **Task: Conductor - User Manual Verification 'Verification and Benchmarking' (Protocol in workflow.md)**
 
-## Phase 2: Streaming Optimization and Robustness
-- [ ] **Task: Implement custom `io.Reader` wrapper for progress**
-    - [ ] Write a `ProgressReader` that wraps an `io.Reader` and updates the progress bar on every `Read()` call.
-    - [ ] Replace `io.MultiWriter` with this wrapper to minimize write-side overhead.
-    - [ ] Ensure the wrapper handles EOF correctly.
-- [ ] **Task: Enhance error handling for stream interruptions**
-    - [ ] Update `ServeFileWithProgress` to listen for `r.Context().Done()` to stop reading and writing immediately if the client disconnects.
-    - [ ] Add detailed logging for different types of stream failures (connection reset, file read error).
-- [ ] **Task: Conductor - User Manual Verification 'Streaming Optimization and Robustness' (Protocol in workflow.md)**
+## Phase 2: Streaming Optimization and Robustness [checkpoint: 8755585]
+- [x] **Task: Implement custom `io.Reader` wrapper for progress**
+    - [x] Write a `ProgressReader` that wraps an `io.Reader` and updates the progress bar on every `Read()` call.
+    - [x] Replace `io.MultiWriter` with this wrapper to minimize write-side overhead.
+    - [x] Ensure the wrapper handles EOF correctly.
+- [x] **Task: Enhance error handling for stream interruptions**
+    - [x] Update `ServeFileWithProgress` to listen for `r.Context().Done()` to stop reading and writing immediately if the client disconnects.
+    - [x] Add detailed logging for different types of stream failures (connection reset, file read error).
+- [x] **Task: Conductor - User Manual Verification 'Streaming Optimization and Robustness' (Protocol in workflow.md)**
 
 ## Phase 3: Concurrency and Performance Testing
 - [ ] **Task: Implement concurrent transfer tests**
