@@ -18,17 +18,28 @@ import (
 	"github.com/schollz/progressbar/v3"
 )
 
+// ReceiveOptions defines configuration for the receive server.
+type ReceiveOptions struct {
+	Port   int
+	Secure bool
+	PIN    string
+}
+
 // StartReceiveServer initializes the ephemeral server to receive files.
-func StartReceiveServer(secure bool) error {
+func StartReceiveServer(destDir string, opts ReceiveOptions) error {
 	// 1. Discover Network Interface and Port
 	ip, err := network.GetActiveIPv4Interface()
 	if err != nil {
 		fmt.Printf("[Warning] Could not auto-detect primary IP. Using 127.0.0.1. Error: %v\n", err)
 		ip = "127.0.0.1"
 	}
-	port, err := network.GetAvailablePort()
-	if err != nil {
-		return fmt.Errorf("could not find open port: %w", err)
+
+	port := opts.Port
+	if port <= 0 {
+		port, err = network.GetAvailablePort()
+		if err != nil {
+			return fmt.Errorf("could not find open port: %w", err)
+		}
 	}
 
 	// 2. Generate secure upload URL and optional PIN
@@ -40,8 +51,8 @@ func StartReceiveServer(secure bool) error {
 	uploadPath := fmt.Sprintf("/u/%s", hash)
 	uploadURL := fmt.Sprintf("http://%s:%d%s", ip, port, uploadPath)
 
-	var pin string
-	if secure {
+	pin := opts.PIN
+	if opts.Secure && pin == "" {
 		pin, err = server.GeneratePIN()
 		if err != nil {
 			return err
@@ -51,7 +62,7 @@ func StartReceiveServer(secure bool) error {
 	// Output Info
 	fmt.Printf("[Network] Using active interface: %s\n", ip)
 	fmt.Printf("[Server]  Dropzone started on port %d\n", port)
-	if secure {
+	if opts.Secure {
 		fmt.Printf("[Auth]    PIN REQUIRED: %s\n", pin)
 	}
 	fmt.Printf("[URL]     %s\n", uploadURL)
@@ -79,7 +90,7 @@ func StartReceiveServer(secure bool) error {
 		data := struct {
 			Secure bool
 		}{
-			Secure: secure,
+			Secure: opts.Secure,
 		}
 
 		w.Header().Set("Content-Type", "text/html")
@@ -96,7 +107,7 @@ func StartReceiveServer(secure bool) error {
 		}
 
 		// Handle upload with progress bar
-		ReceiveFileWithProgress(w, r, "", secure, pin)
+		ReceiveFileWithProgress(w, r, destDir, opts.Secure, pin)
 	})
 
 	fmt.Println("\nStatus: Ready to receive files... Press Ctrl+C to stop. (timeout 5m)")

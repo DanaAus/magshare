@@ -16,8 +16,15 @@ import (
 	"github.com/schollz/progressbar/v3"
 )
 
+// SendOptions defines configuration for the send server.
+type SendOptions struct {
+	Port   int
+	Secure bool
+	PIN    string
+}
+
 // StartSendServer initializes the ephemeral server and handles file sending.
-func StartSendServer(targetPath string, secure bool) error {
+func StartSendServer(targetPath string, opts SendOptions) error {
 	// 1. Check if path exists
 	info, err := os.Stat(targetPath)
 	if err != nil {
@@ -30,9 +37,13 @@ func StartSendServer(targetPath string, secure bool) error {
 		fmt.Printf("[Warning] Could not auto-detect primary IP. Using 127.0.0.1. Error: %v\n", err)
 		ip = "127.0.0.1"
 	}
-	port, err := network.GetAvailablePort()
-	if err != nil {
-		return fmt.Errorf("could not find open port: %w", err)
+
+	port := opts.Port
+	if port <= 0 {
+		port, err = network.GetAvailablePort()
+		if err != nil {
+			return fmt.Errorf("could not find open port: %w", err)
+		}
 	}
 
 	// 3. Generate secure download URL
@@ -47,6 +58,12 @@ func StartSendServer(targetPath string, secure bool) error {
 	// Output Info
 	fmt.Printf("[Network] Using active interface: %s\n", ip)
 	fmt.Printf("[Server]  Started on port %d\n", port)
+	if opts.Secure {
+		if opts.PIN == "" {
+			opts.PIN, _ = server.GeneratePIN()
+		}
+		fmt.Printf("[Auth]    PIN REQUIRED: %s\n", opts.PIN)
+	}
 	fmt.Printf("[URL]     %s\n", downloadURL)
 
 	// Print QR
@@ -61,6 +78,17 @@ func StartSendServer(targetPath string, secure bool) error {
 		if r.Method != http.MethodGet {
 			http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 			return
+		}
+
+		// Check PIN if secure mode is enabled
+		if opts.Secure {
+			// For downloads, we might want to check a query param or a cookie
+			// For simplicity, let's check a query param "pin"
+			clientPin := r.URL.Query().Get("pin")
+			if clientPin != opts.PIN {
+				http.Error(w, "Invalid PIN", http.StatusUnauthorized)
+				return
+			}
 		}
 
 		fmt.Printf("\n[Server] Connection established from %s\n", r.RemoteAddr)
