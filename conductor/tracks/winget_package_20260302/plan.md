@@ -8,7 +8,7 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)
 
 ## Phase 2: Manifest Generation
-- [ ] Task: Create/Update `winget/qshare.yaml` with required metadata
+- [x] Task: Create/Update `winget/qshare.yaml` with required metadata
     - [ ] Update `PackageIdentifier` to `Temos.QShare`
     - [ ] Update `Publisher` to `Temos`
     - [ ] Update `InstallerUrl` to `https://github.com/DanaAus/qshare/releases/download/v1.0.0/qshare.exe`
@@ -21,6 +21,8 @@
     - [ ] Verify YAML syntax is correct
     - [ ] Verify all fields match the specification
 - [ ] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)
+
+
 
 
 
