@@ -1,14 +1,11 @@
 <div align="center">
 
-# 🚀 magshare
+# 🚀 Magshare
 
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
-<<<<<<< HEAD
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Go Report Card](https://goreportcard.com/badge/github.com/DanaAus/magshare)](https://goreportcard.com/report/github.com/DanaAus/magshare)
-=======
 [![Go Report Card](https://goreportcard.com/badge/github.com/DanaAus/qshare)](https://goreportcard.com/report/github.com/DanaAus/qshare)
->>>>>>> 5c68f059b69091d2b7c148c46fbf3e3361db5158
 
 **Instant, frictionless file sharing and receiving across your local network via CLI.**
 
@@ -16,7 +13,7 @@
 
 ---
 
-**magshare** is a blazing-fast, terminal-based utility designed to eliminate the friction of transferring files between devices on the same local network. By spinning up an ephemeral local web server and rendering a QR code directly in your terminal, it allows any mobile device or PC to securely download or upload files in seconds—no cables, no cloud drives, and no client-side app installations required.
+**Magshare** is a blazing-fast, terminal-based utility designed to eliminate the friction of transferring files between devices on the same local network. By spinning up an ephemeral local web server and rendering a QR code directly in your terminal, it allows any mobile device or PC to securely download or upload files in seconds—no cables, no cloud drives, and no client-side app installations required.
 
 ## ✨ Core Features
 
