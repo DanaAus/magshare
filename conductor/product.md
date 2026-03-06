@@ -17,6 +17,7 @@ To provide the fastest and most seamless way to transfer files between devices o
 - **Memory-Efficient Streaming:** Direct streaming from disk to handle large files (10GB+) with low RAM usage.
 - **Secure Mode:** PIN-protected transfers for sensitive files.
 - **Web Dropzone:** A responsive HTML5 interface for receiving files from client devices.
+- **Demo Mode:** A stealth mode that fakes connection information (IP, QR Code) for safe promotional recordings.
 
 ## Success Criteria
 - Files can be transferred between devices within seconds of starting the command.
