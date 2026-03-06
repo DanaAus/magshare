@@ -16,7 +16,7 @@ Tags:
 Installers:
   - Architecture: x64
     InstallerType: portable
-    InstallerUrl: https://github.com/DanaAus/magshare/releases/download/v1.0.0/magshare.exe
+    InstallerUrl: https://github.com/DanaAus/magshare/releases/download/v1.0.0-magshare/magshare.exe
     InstallerSha256: 8245D7BAE457BA5FB487397009C49FA50B3FC0265E2BEED126AF9D8566396A40
     UpgradeBehavior: install
 ManifestType: singleton

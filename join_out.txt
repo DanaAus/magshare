@@ -1,0 +1,7 @@
+[Network] Connecting to sync server at ws://192.168.1.10:47461/ws?pin=9178...
+[Status] Successfully joined sync session! Syncing to G:\Games\Games\Projects\fileinbreach\test_folder_B.
+Press Ctrl+C to disconnect and close the sync session.
+[Sync Received] File updated: hello.txt
+[Sync Ignored] Remote hello.txt is older than local version.
+[Sync Sending] Update: hello.txt
+[Sync Sending] Update: hello.txt

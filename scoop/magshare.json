@@ -5,7 +5,7 @@
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/DanaAus/magshare/releases/download/v1.0.0/magshare.exe",
+            "url": "https://github.com/DanaAus/magshare/releases/download/v1.0.0-magshare/magshare.exe",
             "hash": "8245D7BAE457BA5FB487397009C49FA50B3FC0265E2BEED126AF9D8566396A40"
         }
     },
@@ -14,7 +14,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/DanaAus/magshare/releases/download/v$version/magshare.exe"
+                "url": "https://github.com/DanaAus/magshare/releases/download/v$version-magshare/magshare.exe"
             }
         }
     }

@@ -1,0 +1,12 @@
+[Network] Using active interface: 192.168.1.10
+[Sync Server] Started on 192.168.1.10:47461
+
+To connect to this sync session on another machine, run:
+>> qshare join 192.168.1.10:47461 "test_folder_A" --pin 9178 <<
+
+Status: Waiting for peer to join... (Ctrl+C to stop)
+[Status] Peer connected from 192.168.1.10:47473! Sync is now active.
+[Sync Sending] Update: hello.txt
+[Sync Sending] Update: hello.txt
+[Sync Received] File updated: hello.txt
+[Sync Ignored] Remote hello.txt is older than local version.
