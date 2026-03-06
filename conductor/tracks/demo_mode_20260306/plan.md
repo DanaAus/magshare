@@ -24,7 +24,7 @@ This plan outlines the steps required to implement the "Demo Mode" for magshare,
 - [x] **Task: Conductor - User Manual Verification 'Phase 2: Integration into Commands' (Protocol in workflow.md)** 5260db4
 
 ## Phase 3: Stealth & Verification
-- [ ] **Task: Ensure Stealth Attribute**
+- [x] **Task: Ensure Stealth Attribute** 18eb1a1
     - [ ] Review all UI components to ensure no "Demo Mode" label or status is visible when the flag is active.
 - [ ] **Task: Verification and Manual Testing**
     - [ ] Verify `magshare send --demo` shows faked details.
