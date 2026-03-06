@@ -2,7 +2,7 @@
 
 This plan outlines the steps required to implement the "Demo Mode" for magshare, faking connection information for promotional purposes while maintaining stealth.
 
-## Phase 1: Core Logic & Flag Definition
+## Phase 1: Core Logic & Flag Definition [checkpoint: 6a1ca29]
 - [x] **Task: Define the Global Demo Flag** e037374
     - [ ] Add a new flag (e.g., `--demo`) to the root command in `cmd/root.go`.
     - [ ] Ensure the flag is persistent and accessible to all subcommands (`send`, `receive`).
@@ -10,7 +10,7 @@ This plan outlines the steps required to implement the "Demo Mode" for magshare,
 - [x] **Task: Create IP and URL Faking Utilities** 9fca513
     - [ ] Implement a function in `internal/network/interface.go` that returns a fake IP when demo mode is active.
     - [ ] Implement a utility that takes a URL and replaces the IP/port with fake versions for display.
-- [ ] **Task: Conductor - User Manual Verification 'Phase 1: Core Logic & Flag Definition' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 1: Core Logic & Flag Definition' (Protocol in workflow.md)** 6a1ca29
 
 ## Phase 2: Integration into Commands
 - [ ] **Task: Integrate Demo Mode into `send` Command**
