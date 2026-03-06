@@ -26,7 +26,7 @@ This plan outlines the steps required to implement the "Demo Mode" for magshare,
 ## Phase 3: Stealth & Verification
 - [x] **Task: Ensure Stealth Attribute** 18eb1a1
     - [ ] Review all UI components to ensure no "Demo Mode" label or status is visible when the flag is active.
-- [ ] **Task: Verification and Manual Testing**
+- [x] **Task: Verification and Manual Testing** a90fdf7
     - [ ] Verify `magshare send --demo` shows faked details.
     - [ ] Verify `magshare receive --demo` shows faked details.
     - [ ] Verify the actual server still binds to the real IP (internal functionality test).
