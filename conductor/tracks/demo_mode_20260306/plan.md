@@ -19,7 +19,7 @@ This plan outlines the steps required to implement the "Demo Mode" for magshare,
 - [x] **Task: Integrate Demo Mode into `receive` Command** c5ecc2d
     - [ ] Modify `cmd/receive.go` and `internal/handlers/receive.go` to use the fake IP and URL for terminal output.
     - [ ] Ensure the QR code generator receives the faked URL.
-- [ ] **Task: Integrate Demo Mode into TUI Mode**
+- [x] **Task: Integrate Demo Mode into TUI Mode** a534d36
     - [ ] Modify the `interactive.go` and related TUI logic to respect the demo flag when displaying connection details.
 - [ ] **Task: Conductor - User Manual Verification 'Phase 2: Integration into Commands' (Protocol in workflow.md)**
 
