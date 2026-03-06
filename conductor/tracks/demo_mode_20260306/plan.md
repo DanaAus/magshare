@@ -13,7 +13,7 @@ This plan outlines the steps required to implement the "Demo Mode" for magshare,
 - [x] **Task: Conductor - User Manual Verification 'Phase 1: Core Logic & Flag Definition' (Protocol in workflow.md)** 6a1ca29
 
 ## Phase 2: Integration into Commands
-- [ ] **Task: Integrate Demo Mode into `send` Command**
+- [x] **Task: Integrate Demo Mode into `send` Command** 14db76f
     - [ ] Modify `cmd/send.go` and `internal/handlers/send.go` to use the fake IP and URL for terminal output.
     - [ ] Ensure the QR code generator receives the faked URL.
 - [ ] **Task: Integrate Demo Mode into `receive` Command**
