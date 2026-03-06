@@ -52,6 +52,10 @@ func StartReceiveServer(destDir string, opts ReceiveOptions) error {
 	uploadPath := fmt.Sprintf("/u/%s", hash)
 	uploadURL := fmt.Sprintf("http://%s:%d%s", ip, port, uploadPath)
 
+	// Demo Mode Faking for Display
+	displayIP := network.GetDisplayIP(ip, opts.Demo)
+	displayURL := network.GetDisplayURL(uploadURL, opts.Demo)
+
 	pin := opts.PIN
 	if opts.Secure && pin == "" {
 		pin, err = server.GeneratePIN()
@@ -61,16 +65,16 @@ func StartReceiveServer(destDir string, opts ReceiveOptions) error {
 	}
 
 	// Output Info
-	fmt.Printf("[Network] Using active interface: %s\n", ip)
+	fmt.Printf("[Network] Using active interface: %s\n", displayIP)
 	fmt.Printf("[Server]  Dropzone started on port %d\n", port)
 	if opts.Secure {
 		fmt.Printf("[Auth]    PIN REQUIRED: %s\n", pin)
 	}
-	fmt.Printf("[URL]     %s\n", uploadURL)
+	fmt.Printf("[URL]     %s\n", displayURL)
 
 	// Print QR
 	fmt.Println("[QR]")
-	qrterminal.GenerateHalfBlock(uploadURL, qrterminal.L, os.Stdout)
+	qrterminal.GenerateHalfBlock(displayURL, qrterminal.L, os.Stdout)
 
 	// 3. Setup Server
 	srv := server.NewEphemeralServer(port)
