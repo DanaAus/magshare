@@ -7,7 +7,7 @@ This plan outlines the steps required to implement the "Demo Mode" for magshare,
     - [ ] Add a new flag (e.g., `--demo`) to the root command in `cmd/root.go`.
     - [ ] Ensure the flag is persistent and accessible to all subcommands (`send`, `receive`).
     - [ ] Update any necessary state or context objects to carry this flag.
-- [ ] **Task: Create IP and URL Faking Utilities**
+- [x] **Task: Create IP and URL Faking Utilities** 9fca513
     - [ ] Implement a function in `internal/network/interface.go` that returns a fake IP when demo mode is active.
     - [ ] Implement a utility that takes a URL and replaces the IP/port with fake versions for display.
 - [ ] **Task: Conductor - User Manual Verification 'Phase 1: Core Logic & Flag Definition' (Protocol in workflow.md)**
