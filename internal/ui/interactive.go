@@ -19,10 +19,16 @@ type InteractiveConfig struct {
 }
 
 // RunInteractivePrompts launches the interactive TUI for MagShare.
-func RunInteractivePrompts(demo bool) (*InteractiveConfig, error) {
+func RunInteractivePrompts(demo bool, defaultPort int, defaultPath string, defaultSecure bool) (*InteractiveConfig, error) {
+	if defaultPort == 0 {
+		defaultPort = 8080
+	}
+
 	cfg := &InteractiveConfig{
-		Port: 8080, // Default port
-		Demo: demo,
+		Port:   defaultPort,
+		Secure: defaultSecure,
+		Path:   defaultPath,
+		Demo:   demo,
 	}
 
 	// 1. Choose Action
@@ -37,7 +43,7 @@ func RunInteractivePrompts(demo bool) (*InteractiveConfig, error) {
 				).
 				Value(&cfg.Action),
 		),
-	)
+	).WithTheme(huh.ThemeCharm())
 
 	err := actionForm.Run()
 	if err != nil {
@@ -48,7 +54,7 @@ func RunInteractivePrompts(demo bool) (*InteractiveConfig, error) {
 	}
 
 	// 2. Configure Action
-	var portStr string = "8080"
+	var portStr string = strconv.Itoa(cfg.Port)
 	var groups []*huh.Group
 
 	switch cfg.Action {
@@ -112,7 +118,7 @@ func RunInteractivePrompts(demo bool) (*InteractiveConfig, error) {
 		))
 	}
 
-	configForm := huh.NewForm(groups...)
+	configForm := huh.NewForm(groups...).WithTheme(huh.ThemeCharm())
 	err = configForm.Run()
 	if err != nil {
 		if errors.Is(err, huh.ErrUserAborted) {
@@ -141,7 +147,7 @@ func RunInteractivePrompts(demo bool) (*InteractiveConfig, error) {
 						return nil
 					}),
 			),
-		)
+		).WithTheme(huh.ThemeCharm())
 		err = pinForm.Run()
 		if err != nil {
 			if errors.Is(err, huh.ErrUserAborted) {

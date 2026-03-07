@@ -23,11 +23,21 @@ var receiveCmd = &cobra.Command{
 			Demo:   demoMode,
 		}
 
+		// Precedence Logic: 
+		// 1. Explicit Flag
+		// 2. Config File
+		// 3. Application Default (false)
+		if !cmd.Flags().Changed("secure") && appConfig.SecureMode {
+			opts.Secure = true
+		}
+
 		if pinFlag != "" {
 			opts.Secure = true
 		}
 
-		if err := handlers.StartReceiveServer("", opts); err != nil {
+		path := appConfig.DownloadDir
+
+		if err := handlers.StartReceiveServer(path, opts); err != nil {
 			log.Fatalf("\n[Error] %v\n", err)
 		}
 	},

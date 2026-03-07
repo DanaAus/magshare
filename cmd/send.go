@@ -26,6 +26,14 @@ var sendCmd = &cobra.Command{
 			Demo:   demoMode,
 		}
 
+		// Precedence Logic:
+		// 1. Explicit Flag
+		// 2. Config File
+		// 3. Application Default (false)
+		if !cmd.Flags().Changed("secure") && appConfig.SecureMode {
+			opts.Secure = true
+		}
+
 		if pinFlag != "" {
 			opts.Secure = true
 		}
