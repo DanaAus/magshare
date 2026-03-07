@@ -1,6 +1,6 @@
 # Implementation Plan: Workspace Setup & Crash Logging
 
-## Phase 1: Foundation and Utilities
+## Phase 1: Foundation and Utilities [checkpoint: c3c7002]
 - [x] Task: Set up core directory and path utility functions 1b5f374
     - [ ] Create `internal/workspace/path.go` to handle system config directory discovery (e.g., `os.UserConfigDir`)
     - [ ] Implement `GetWorkspaceRoot()` and `GetLogsDir()` functions
@@ -9,7 +9,7 @@
     - [ ] Add `EnsureDirectoryExists(path string)` utility
     - [ ] Add `FileExists(path string)` utility
     - [ ] Write tests to verify directory creation and file detection logic
-- [~] Task: Conductor - User Manual Verification 'Phase 1: Foundation and Utilities' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 1: Foundation and Utilities' (Protocol in workflow.md) c3c7002
 
 ## Phase 2: First-Run Logic and Config Creation
 - [ ] Task: Implement first-run detection and initialization
