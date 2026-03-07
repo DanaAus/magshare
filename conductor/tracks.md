@@ -4,7 +4,7 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [ ] **Track: Embed the media folder gif into README without uploading the folder to GitHub.**
+- [x] **Track: Embed the media folder gif into README without uploading the folder to GitHub.**
 *Link: [./tracks/embed_gif_readme_20260307/](./tracks/embed_gif_readme_20260307/)*
 
 ---
