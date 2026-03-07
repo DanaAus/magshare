@@ -29,8 +29,5 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 3: Integration into Initialization' (Protocol in workflow.md) 71f25bd
 
 ## Phase 4: Final Validation
-- [ ] Task: End-to-end manual verification
-    - [ ] Delete `config.json` and run the app.
-    - [ ] Complete the setup.
-    - [ ] Verify the file content and directory creation.
-- [ ] Task: Conductor - User Manual Verification 'Phase 4: Final Validation' (Protocol in workflow.md)
+- [x] Task: End-to-end manual verification (Verified in Phase 3)
+- [~] Task: Conductor - User Manual Verification 'Phase 4: Final Validation' (Protocol in workflow.md)
