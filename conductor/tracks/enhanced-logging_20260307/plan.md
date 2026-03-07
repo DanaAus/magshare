@@ -9,7 +9,7 @@
     - [ ] Add a `format(level LogLevel, msg string)` method to `StructuredLogger`
     - [ ] Ensure it correctly interpolates `[TIMESTAMP] [LEVEL] [COMPONENT] [PID]`
     - [ ] Write unit tests to verify the string output matches the spec example
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: Core Logger Implementation' (Protocol in workflow.md)
+- [~] Task: Conductor - User Manual Verification 'Phase 1: Core Logger Implementation' (Protocol in workflow.md)
 
 ## Phase 2: Hybrid Output and Filtering
 - [ ] Task: Implement Filtered Multi-Writer
