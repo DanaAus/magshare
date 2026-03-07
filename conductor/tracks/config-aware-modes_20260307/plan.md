@@ -9,7 +9,7 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Configuration Loading Core' (Protocol in workflow.md) dbd85ea
 
 ## Phase 2: Root Command Integration
-- [ ] Task: Integrate config loading in `cmd/root.go`
+- [x] Task: Integrate config loading in `cmd/root.go` 7890bb6
     - [ ] Add a package-level variable `appConfig workspace.Config`.
     - [ ] Create an `initConfig()` function that resolves the config path and calls `LoadConfig`.
     - [ ] Register `initConfig` with `cobra.OnInitialize()`.
