@@ -29,34 +29,19 @@
 ---
 
 ## 📦 Installation
-
+_Magshare is currently available for Windows_
 Magshare is distributed as a standalone executable. Choose your preferred package manager below:
-
-### Windows Native
-**Using Scoop:**
-```powershell
-scoop bucket add magshare https://github.com/DanaAus/magshare
-scoop install magshare
-```
-
-**Using WinGet:**
-```powershell
-winget install magshare
-```
-
-### Cross-Platform (Node / JavaScript Ecosystem)
-If you already have a Node or Bun environment, you can install or run magshare globally:
-```bash
-bun x magshare
-# OR
-npm install -g magshare
-```
 
 ### From Source (Go)
 For developers who want to compile the latest version directly:
 ```bash
 go install github.com/DanaAus/magshare@latest
 ```
+
+### Manual Installation
+1. Download the latest version from the Releases page>
+2. Put the downloaded executable file into a folder
+3. Run the program by typing ``magshare`` inside your Terminal (Ensure the path must be the parent folder of the program).
 
 ---
 
