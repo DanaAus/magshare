@@ -1,7 +1,7 @@
 # Implementation Plan: Interactive First-Run Setup
 
 ## Phase 1: Config Struct Update
-- [ ] Task: Update `internal/workspace/config.go`
+- [x] Task: Update `internal/workspace/config.go` 10dc16f
     - [ ] Add `DownloadDir` string field to the `Config` struct.
     - [ ] Update `CreateDefaultConfig` to accept a `Config` object instead of creating a fixed one.
     - [ ] Write unit tests to verify the new struct and JSON serialization.
