@@ -42,7 +42,7 @@
     - [ ] Logic: Recover from panic, write stack trace to log, print log path to terminal
     - [ ] Implement "Wait 5 Seconds" logic using `time.Sleep` and a countdown timer if possible
     - [ ] Write unit tests to simulate a panic and verify log content and path printing
-- [ ] Task: Refactor `main.go` for integration
+- [x] Task: Refactor `main.go` for integration 2dac42d
     - [ ] Update `main()` to use the new `internal/workspace`, `internal/logger`, and `HandlePanic` logic
     - [ ] Ensure proper ordering of initialization, logging setup, and panic deferment
 - [ ] Task: Conductor - User Manual Verification 'Phase 4: Crash Recovery and Exit Logic' (Protocol in workflow.md)
