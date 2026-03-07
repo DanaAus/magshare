@@ -23,11 +23,11 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Hybrid Output and Filtering' (Protocol in workflow.md) dde475d
 
 ## Phase 3: Integration and Refactoring
-- [ ] Task: Replace raw `fmt.Print` calls with the new Logger
+- [x] Task: Replace raw `fmt.Print` calls with the new Logger 7f18d55
     - [ ] Audit `internal/server`, `internal/handlers`, and `cmd/` for terminal output
     - [ ] Migrate essential messages to `logger.Info()` and technical details to `logger.Debug()`
     - [ ] Update `main.go` to use the new logging methods for its lifecycle events
-- [ ] Task: Refactor Crash Recovery integration
+- [x] Task: Refactor Crash Recovery integration 7f18d55
     - [ ] Update `HandlePanic()` to use the new formatting for the crash report header
     - [ ] Ensure the stack trace is still captured clearly within the formatted log
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: Integration and Refactoring' (Protocol in workflow.md)
