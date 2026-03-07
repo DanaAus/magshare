@@ -1,7 +1,7 @@
 # Implementation Plan: Workspace Setup & Crash Logging
 
 ## Phase 1: Foundation and Utilities
-- [ ] Task: Set up core directory and path utility functions
+- [x] Task: Set up core directory and path utility functions 1b5f374
     - [ ] Create `internal/workspace/path.go` to handle system config directory discovery (e.g., `os.UserConfigDir`)
     - [ ] Implement `GetWorkspaceRoot()` and `GetLogsDir()` functions
     - [ ] Write unit tests in `internal/workspace/path_test.go` to verify correct path resolution for Windows/macOS/Linux
