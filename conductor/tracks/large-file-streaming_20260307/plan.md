@@ -24,7 +24,7 @@
     - [ ] Ensure correct `modtime` and `Content-Disposition` headers are handled by `ServeContent`.
 - [x] Task: Implement memory usage verification e3741a6
     - [ ] Create a specialized integration test `internal/handlers/send_memory_test.go` that serves a large file (using a sparse file or mock) and monitors `runtime.MemStats`.
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: Refactor File Serving' (Protocol in workflow.md)
+- [~] Task: Conductor - User Manual Verification 'Phase 3: Refactor File Serving' (Protocol in workflow.md)
 
 ## Phase 4: Integration and Range Verification
 - [ ] Task: Verify Range Support
