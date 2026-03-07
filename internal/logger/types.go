@@ -1,7 +1,9 @@
 package logger
 
 import (
+	"fmt"
 	"io"
+	"time"
 )
 
 // LogLevel defines the severity of a log message.
@@ -48,7 +50,8 @@ type StructuredLogger struct {
 
 // Log writes a message at the specified level.
 func (l *StructuredLogger) Log(level LogLevel, msg string) {
-	// Implementation will follow in formatting task
+	timestamp := time.Now().Format("2006-01-02 15:04:05")
+	fmt.Fprintf(l.Writer, "[%s] [%s] [%s] [%d] %s\n", timestamp, level, l.Component, l.PID, msg)
 }
 
 func (l *StructuredLogger) Debug(msg string) { l.Log(DEBUG, msg) }
