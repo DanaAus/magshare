@@ -15,6 +15,7 @@ The primary users are everyday users and cross-device users who need a quick and
 *   **QR Code Discovery:** Automatically generate a scannable QR code in the terminal for instant connection.
 *   **Bi-directional Sharing:** Support both sending files from the host to a client and receiving files from a client to the host via a web-based "Dropzone."
 *   **TUI/Interactive Mode:** Provide a guided, prompt-based terminal user interface (using the Charmbracelet stack) for configuration.
+*   **Interactive Onboarding:** Guided first-run experience to configure default download locations and security preferences.
 *   **Structured & Leveled Logging:** Provides high-signal terminal output and detailed ISO-formatted diagnostic logs in the workspace, categorized by severity (DEBUG, INFO, WARN, ERROR).
 *   **Secure Mode:** Optional PIN-based authentication for sensitive transfers.
 *   **Flexible Configuration:** Explicitly customize ports and security PINs via terminal flags or the interactive UI.
