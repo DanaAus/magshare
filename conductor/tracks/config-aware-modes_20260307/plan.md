@@ -6,7 +6,7 @@
     - [ ] Implement logic to read the file and unmarshal JSON.
     - [ ] Add basic validation (port range, download dir existence).
     - [ ] Write unit tests in `internal/workspace/config_test.go` for successful loads and corrupted files.
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: Configuration Loading Core' (Protocol in workflow.md)
+- [~] Task: Conductor - User Manual Verification 'Phase 1: Configuration Loading Core' (Protocol in workflow.md)
 
 ## Phase 2: Root Command Integration
 - [ ] Task: Integrate config loading in `cmd/root.go`

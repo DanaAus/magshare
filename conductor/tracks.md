@@ -4,5 +4,5 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [ ] **Track: Make changes to all modes in order to make those compatible with the first-time setup process.**
+- [~] **Track: Make changes to all modes in order to make those compatible with the first-time setup process.**
 *Link: [./tracks/config-aware-modes_20260307/](./tracks/config-aware-modes_20260307/)*
