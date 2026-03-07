@@ -8,13 +8,13 @@
     - [ ] Write unit tests in `internal/workspace/config_test.go` for successful loads and corrupted files.
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Configuration Loading Core' (Protocol in workflow.md) dbd85ea
 
-## Phase 2: Root Command Integration
+## Phase 2: Root Command Integration [checkpoint: ed3f047]
 - [x] Task: Integrate config loading in `cmd/root.go` 7890bb6
     - [ ] Add a package-level variable `appConfig workspace.Config`.
     - [ ] Create an `initConfig()` function that resolves the config path and calls `LoadConfig`.
     - [ ] Register `initConfig` with `cobra.OnInitialize()`.
     - [ ] Handle load errors by logging a warning via the structured logger.
-- [~] Task: Conductor - User Manual Verification 'Phase 2: Root Command Integration' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Root Command Integration' (Protocol in workflow.md) ed3f047
 
 ## Phase 3: Subcommand and Interactive Mode Update
 - [ ] Task: Update `cmd/receive.go`
