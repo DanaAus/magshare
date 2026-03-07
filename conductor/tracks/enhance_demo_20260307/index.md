@@ -1,4 +1,4 @@
-# Track demo_mode_20260306 Context
+# Track enhance_demo_20260307 Context
 
 - [Specification](./spec.md)
 - [Implementation Plan](./plan.md)

@@ -1,26 +1,23 @@
 # Initial Concept
-Instant, frictionless file sharing and receiving across a local network via CLI.
+magshare is a terminal-based utility designed for instant, frictionless file sharing and receiving across a local network. It leverages ephemeral web servers and terminal-rendered QR codes to allow any device on the same Wi-Fi network to securely download or upload files without complex configuration.
 
-# Product Definition
+# Product Guide: magshare
 
-## Vision
-To provide the fastest and most seamless way to transfer files between devices on a local network without the need for cloud services, cables, or specialized software installations on client devices.
+## Target Audience
+The primary users are everyday users and cross-device users who need a quick and easy way to transfer files between their PCs and mobile devices on the same local network without relying on cloud services or physical cables.
 
-## Target Users
-- Developers and power users who prefer the command line.
-- Users who need to quickly move files from their PC to a mobile device or vice versa.
-- Teams working in a local environment where cloud sharing is impractical or restricted.
+## Core Goals
+1.  **Frictionless Sharing:** Eliminate the setup burden for transferring files.
+2.  **Secure Transfer:** Provide mechanisms like PIN protection to ensure transfers are authorized.
+3.  **Simplicity:** Maintain a clean, intuitive interface that anyone can use.
 
-## Core Features
-- **Instant QR Generation:** Automatic detection of local IP and rendering of a scannable QR code.
-- **Interactive TUI Mode:** A guided, prompt-based interface for easy configuration.
-- **Memory-Efficient Streaming:** Direct streaming from disk to handle large files (10GB+) with low RAM usage.
-- **Secure Mode:** PIN-protected transfers for sensitive files.
-- **Web Dropzone:** A responsive HTML5 interface for receiving files from client devices.
-- **Demo Mode:** A stealth mode that fakes connection information (IP, QR Code) for safe promotional recordings.
+## Key Features
+*   **QR Code Discovery:** Automatically generate a scannable QR code in the terminal for instant connection.
+*   **Bi-directional Sharing:** Support both sending files from the host to a client and receiving files from a client to the host via a web-based "Dropzone."
+*   **TUI/Interactive Mode:** Provide a guided, prompt-based terminal user interface (using the Charmbracelet stack) for configuration.
+*   **Secure Mode:** Optional PIN-based authentication for sensitive transfers.
+*   **Memory-Efficient Streaming:** Direct-to-disk streaming for ultra-large files (10GB+), maintaining a low memory footprint (under 20MB).
 
-## Success Criteria
-- Files can be transferred between devices within seconds of starting the command.
-- Zero-configuration requirement for the client device.
-- Robust handling of large files without system performance degradation.
-- High accessibility via standard package managers (Scoop, WinGet, npm/bun).
+## Technical Constraints
+*   **Zero External Dependencies:** The application should be distributed as a single, standalone binary with no external runtime requirements.
+*   **Low Memory Footprint:** Efficient resource usage is critical for performance and reliability across different hardware.

@@ -1,23 +1,18 @@
-# Product Guidelines
+# Product Guidelines: magshare
 
-## CLI Philosophy
-- **Speed First:** Commands should execute instantly and provide immediate feedback.
-- **Interactivity:** Prefer guided prompts (TUI) for complex operations but support direct flags for automation.
-- **Clarity:** Help messages and error output must be concise and actionable.
-- **Zero-Config:** Works out of the box with sensible defaults (auto-IP detection, random high-range ports).
+## Tone & Style
+The tone of magshare should be **Friendly & Accessible**. Documentation, CLI messages, and UI text should be helpful, welcoming, and easy to understand for both technical and non-technical users. Avoid overly dense technical jargon when simpler explanations suffice.
 
-## User Experience (UX)
-- **Visual Feedback:** Use progress bars for file transfers.
-- **Platform Specifics:** Render QR codes in the terminal using ANSI escape codes for broad compatibility.
-- **Error Recovery:** Gracefully handle network interruptions and provide clear retry instructions.
-- **Web Interface:** Keep the receiver's dropzone lightweight and mobile-responsive.
+## User Experience (UX) Principles
+*   **Minimal Friction:** Every action should require the fewest possible steps. Default to the most common use case (e.g., auto-detecting IP, choosing a high-range port).
+*   **Visual Clarity & Feedback:** Use clear, consistent formatting in the terminal. Provide immediate and informative feedback for every user action (e.g., "Server started at...", "File received: ...").
+*   **Convention over Configuration:** Provide sensible defaults that work for 90% of users, while allowing advanced users to override settings via flags or the TUI.
 
-## Branding
-- **Name:** `magshare` (lowercase) for the command, but `MagShare` for formal documentation.
-- **Colors:** Use high-contrast terminal colors; maintain a clean, professional aesthetic.
-- **Logo:** Minimalist; often represented by its name in a bold terminal font.
+## Accessibility (A11y)
+*   **High Contrast Terminal UI:** Ensure that TUI elements (using Lipgloss/Bubbletea) use colors that are legible across various terminal themes (light and dark).
+*   **Web Accessibility (A11y):** The "Receive Dropzone" web UI must follow basic accessibility guidelines, including semantic HTML and proper ARIA labels.
+*   **Keyboard Accessible UI:** Both the TUI and the web-based Dropzone must be fully navigable using only a keyboard.
 
-## Technical Standards
-- **Memory Safety:** Direct streaming of data to avoid excessive memory consumption.
-- **Concurrency:** Efficiently manage parallel transfers and server timeouts.
-- **Extensibility:** Use standard Go conventions to ensure the codebase is easy to contribute to.
+## Design Guidelines
+*   **Terminal UI (TUI):** Utilize the Charmbracelet stack (Bubbletea, Huh, Lipgloss) for a modern, responsive, and visually appealing terminal experience.
+*   **Web UI:** The Dropzone should be a single-page, responsive HTML5 interface that is lightweight and fast-loading.

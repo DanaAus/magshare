@@ -1,20 +1,19 @@
-# Technology Stack
+# Technology Stack: magshare
 
-## Core Technologies
-- **Language:** Go (1.25.0) - Provides static compilation, cross-platform support, and strong networking primitives.
-- **CLI Framework:** [Cobra](https://github.com/spf13/cobra) - Industry standard for Go-based CLI tools with robust flag handling and help generation.
-- **TUI/Interactivity:** [Charmbracelet huh](https://github.com/charmbracelet/huh), [Bubbletea](https://github.com/charmbracelet/bubbletea), and [Lipgloss](https://github.com/charmbracelet/lipgloss) - Modern, aesthetic terminal interfaces and layout.
+## Core Language & Runtime
+*   **Go (Golang):** Chosen for its excellent networking support, static typing, and ability to compile to a single, zero-dependency binary. It's ideal for a cross-platform CLI tool.
 
-## Networking & Security
-- **HTTP Server:** Go's standard `net/http` package for ephemeral, high-performance file serving.
-- **Real-time Communication:** [Gorilla WebSocket](https://github.com/gorilla/websocket) - Used for real-time progress updates and bidirectional signaling.
-- **IP Discovery:** Custom logic using Go's `net` package for reliable local network interface discovery.
+## Frameworks & Libraries
+*   **CLI Framework:** **spf13/cobra** - For robust command-line argument parsing and command structure.
+*   **Terminal UI (TUI):** **Charmbracelet ecosystem (Bubbletea, Huh, Lipgloss)** - For building modern, interactive, and visually appealing terminal interfaces.
+*   **Networking:** **Standard net/http** - For a lightweight and performant local web server.
+*   **Real-time Communication:** **Gorilla WebSocket** - To provide live progress updates and a responsive user experience in the web UI.
+*   **QR Rendering:** **mdp/qrterminal** - To display scannable QR codes directly within the terminal.
 
-## Assets & UI
-- **QR Rendering:** [qrterminal](https://github.com/mdp/qrterminal) - Renders high-quality QR codes directly into ANSI-compliant terminals.
-- **Frontend Assets:** Embedded HTML/CSS using Go's `embed` package for a zero-dependency binary.
-- **Progress Tracking:** [progressbar/v3](https://github.com/schollz/progressbar) - Provides visual streaming feedback for large file transfers.
+## Frontend (Dropzone UI)
+*   **HTML5 / Vanilla JS:** To keep the web interface lightweight and fast, minimizing dependencies on external frameworks for the client browser.
+*   **Embedded Assets:** **Go embed** - To bundle all web assets (HTML, CSS, JS) directly into the magshare binary.
 
-## Distribution & Packaging
-- **Node.js/Bun Wrapper:** Lightweight JavaScript entry point (`magshare.js`) to facilitate distribution via `npm` and `bun`.
-- **Windows Packaging:** Native support for [Scoop](https://scoop.sh/) and [WinGet](https://github.com/microsoft/winget-cli) for Windows power users.
+## Infrastructure & Tooling
+*   **Build System:** **Standard Go Toolchain** (e.g., `go build`, `go test`).
+*   **Version Control:** **Git**.
