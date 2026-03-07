@@ -8,7 +8,9 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var sendSecure bool
+var (
+	sendSecure bool
+)
 
 var sendCmd = &cobra.Command{
 	Use:   "send [file or directory]",
@@ -18,8 +20,14 @@ var sendCmd = &cobra.Command{
 		path := args[0]
 
 		opts := handlers.SendOptions{
+			Port:   portFlag,
 			Secure: sendSecure,
+			PIN:    pinFlag,
 			Demo:   demoMode,
+		}
+
+		if pinFlag != "" {
+			opts.Secure = true
 		}
 
 		if err := handlers.StartSendServer(path, opts); err != nil {

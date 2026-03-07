@@ -61,7 +61,8 @@ func GetDisplayIP(realIP string, demo bool) string {
 	return realIP
 }
 
-// GetDisplayURL replaces the real IP and port in a URL with a fake one if demo mode is active.
+// GetDisplayURL replaces the real IP in a URL with a fake one if demo mode is active.
+// It preserves the real port used in the URL.
 func GetDisplayURL(realURL string, demo bool) string {
 	if !demo {
 		return realURL
@@ -76,9 +77,26 @@ func GetDisplayURL(realURL string, demo bool) string {
 	
 	// Find the end of host:port part
 	end := strings.Index(realURL[start:], "/")
+	hostPort := ""
 	if end == -1 {
-		end = len(realURL[start:])
+		hostPort = realURL[start:]
+	} else {
+		hostPort = realURL[start : start+end]
+	}
+
+	// Extract port from hostPort if present
+	port := "8080"
+	if strings.Contains(hostPort, ":") {
+		_, p, err := net.SplitHostPort(hostPort)
+		if err == nil {
+			port = p
+		}
 	}
 	
-	return realURL[:start] + "192.168.100.100:8080" + realURL[start+end:]
+	fakedHostPort := "192.168.100.100:" + port
+	
+	if end == -1 {
+		return realURL[:start] + fakedHostPort
+	}
+	return realURL[:start] + fakedHostPort + realURL[start+end:]
 }

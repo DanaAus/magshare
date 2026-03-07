@@ -12,6 +12,8 @@ import (
 
 var (
 	demoMode bool
+	portFlag int
+	pinFlag  string
 )
 
 var rootCmd = &cobra.Command{
@@ -26,6 +28,15 @@ var rootCmd = &cobra.Command{
 				return nil
 			}
 			return err
+		}
+
+		// Override interactive values if flags are provided
+		if portFlag > 0 {
+			cfg.Port = portFlag
+		}
+		if pinFlag != "" {
+			cfg.PIN = pinFlag
+			cfg.Secure = true
 		}
 
 		switch cfg.Action {
@@ -62,4 +73,6 @@ func Execute() {
 func init() {
 	// Global flags can go here
 	rootCmd.PersistentFlags().BoolVarP(&demoMode, "demo", "", false, "Enable demo mode with fake connection information")
+	rootCmd.PersistentFlags().IntVarP(&portFlag, "port", "p", 0, "Custom port for the server")
+	rootCmd.PersistentFlags().StringVarP(&pinFlag, "pin", "", "", "Custom 4-digit numeric PIN")
 }

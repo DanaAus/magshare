@@ -8,16 +8,25 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var receiveSecure bool
+var (
+	receiveSecure bool
+)
 
 var receiveCmd = &cobra.Command{
 	Use:   "receive",
 	Short: "Start a dropzone server to receive files",
 	Run: func(cmd *cobra.Command, args []string) {
 		opts := handlers.ReceiveOptions{
+			Port:   portFlag,
 			Secure: receiveSecure,
+			PIN:    pinFlag,
 			Demo:   demoMode,
 		}
+
+		if pinFlag != "" {
+			opts.Secure = true
+		}
+
 		if err := handlers.StartReceiveServer("", opts); err != nil {
 			log.Fatalf("\n[Error] %v\n", err)
 		}

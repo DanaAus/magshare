@@ -21,5 +21,11 @@ media/
 .DS_Store
 Thumbs.db
 
-# Conductor helper scripts
+# Package Managers
+winget/
+scoop/
+
+# Conductor & Gemini
+conductor/
+GEMINI.md
 embed_gif.py
