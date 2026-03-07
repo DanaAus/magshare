@@ -26,7 +26,7 @@
 - [x] Task: Update `internal/ui/interactive.go` 0569e19
     - [ ] Modify `RunInteractivePrompts` to accept `appConfig` as an argument.
     - [ ] Use config values as the initial state for the TUI form.
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: Subcommand and Interactive Mode Update' (Protocol in workflow.md)
+- [~] Task: Conductor - User Manual Verification 'Phase 3: Subcommand and Interactive Mode Update' (Protocol in workflow.md)
 
 ## Phase 4: Final Validation
 - [ ] Task: End-to-end manual verification
