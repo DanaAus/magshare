@@ -26,8 +26,8 @@
     - [ ] Create a specialized integration test `internal/handlers/send_memory_test.go` that serves a large file (using a sparse file or mock) and monitors `runtime.MemStats`.
 - [x] Task: Conductor - User Manual Verification 'Phase 3: Refactor File Serving' (Protocol in workflow.md) 4c8f4ea
 
-## Phase 4: Integration and Range Verification
-- [ ] Task: Verify Range Support
+## Phase 4: Integration and Range Verification [checkpoint: bdd55d3]
+- [x] Task: Verify Range Support bdd55d3
     - [ ] Create an integration test `internal/handlers/range_test.go` that uses `httptest` to request specific byte ranges and verifies the status code `206 Partial Content`.
 - [ ] Task: Final end-to-end manual verification
     - [ ] Test with a large file using `curl --range` and verify the terminal progress bar and file integrity.
