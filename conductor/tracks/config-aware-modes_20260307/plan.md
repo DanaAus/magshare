@@ -1,7 +1,7 @@
 # Implementation Plan: Config-Aware Application Modes
 
 ## Phase 1: Configuration Loading Core
-- [ ] Task: Implement `LoadConfig` in `internal/workspace/config.go`
+- [x] Task: Implement `LoadConfig` in `internal/workspace/config.go` f8ec0c0
     - [ ] Add `LoadConfig(path string) (Config, error)` function.
     - [ ] Implement logic to read the file and unmarshal JSON.
     - [ ] Add basic validation (port range, download dir existence).
