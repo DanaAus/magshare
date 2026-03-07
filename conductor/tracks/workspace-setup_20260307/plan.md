@@ -16,7 +16,7 @@
     - [ ] Add `InitializeWorkspace()` function in `internal/workspace/init.go`
     - [ ] Logic: Check for workspace root; if missing, create structure and return `isFirstRun = true`
     - [ ] Write unit tests to verify directory structure creation and first-run flag detection
-- [ ] Task: Implement default config file generation
+- [x] Task: Implement default config file generation 1016094
     - [ ] Define basic `Config` struct (e.g., `Port`, `SecureMode`)
     - [ ] Add `CreateDefaultConfig(path string)` function using `encoding/json`
     - [ ] Write unit tests to verify JSON content and file permissions
