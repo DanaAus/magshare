@@ -17,12 +17,12 @@
     - [ ] Ensure it correctly interacts with the existing `progressbar` library.
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Progress ReadSeeker' (Protocol in workflow.md) e6bd7c0
 
-## Phase 3: Refactor File Serving
-- [ ] Task: Refactor `ServeFileWithProgress` in `internal/handlers/send.go`
+## Phase 3: Refactor File Serving [checkpoint: e3741a6]
+- [x] Task: Refactor `ServeFileWithProgress` in `internal/handlers/send.go` e3741a6
     - [ ] Replace `io.Copy` logic with `http.ServeContent`.
     - [ ] Wrap the file in `ProgressReadSeeker` before passing to `ServeContent`.
     - [ ] Ensure correct `modtime` and `Content-Disposition` headers are handled by `ServeContent`.
-- [ ] Task: Implement memory usage verification
+- [x] Task: Implement memory usage verification e3741a6
     - [ ] Create a specialized integration test `internal/handlers/send_memory_test.go` that serves a large file (using a sparse file or mock) and monitors `runtime.MemStats`.
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: Refactor File Serving' (Protocol in workflow.md)
 
