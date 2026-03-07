@@ -46,3 +46,15 @@ func TestInitializeWorkspaceAtPath(t *testing.T) {
 		t.Error("InitializeWorkspaceAtPath (second run) returned isFirstRun = true, want false")
 	}
 }
+
+func TestInitializeWorkspace(t *testing.T) {
+	// This will use the actual system UserConfigDir/LOCALAPPDATA
+	// We should be careful not to mess up actual config.
+	// But InitializeWorkspace just checks if it exists.
+	
+	// We can at least call it and check it doesn't error.
+	_, err := InitializeWorkspace()
+	if err != nil {
+		t.Errorf("InitializeWorkspace() returned error: %v", err)
+	}
+}

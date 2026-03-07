@@ -36,6 +36,31 @@ func TestGetWorkspaceRoot(t *testing.T) {
 	}
 }
 
+func TestGetWorkspaceRoot_NoEnv(t *testing.T) {
+	if os.Getenv("LOCALAPPDATA") == "" {
+		t.Skip("LOCALAPPDATA not set")
+	}
+
+	// Temporarily clear LOCALAPPDATA
+	original := os.Getenv("LOCALAPPDATA")
+	os.Setenv("LOCALAPPDATA", "")
+	defer os.Setenv("LOCALAPPDATA", original)
+
+	root, err := GetWorkspaceRoot()
+	if err != nil {
+		t.Fatalf("GetWorkspaceRoot() returned error: %v", err)
+	}
+
+	if root == "" {
+		t.Error("GetWorkspaceRoot() returned empty string")
+	}
+	
+	// Should contain "magshare"
+	if !strings.Contains(strings.ToLower(root), "magshare") {
+		t.Errorf("GetWorkspaceRoot() path %q does not contain 'magshare'", root)
+	}
+}
+
 func TestGetLogsDir(t *testing.T) {
 	logsDir, err := GetLogsDir()
 	if err != nil {
