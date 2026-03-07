@@ -48,10 +48,10 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 4: Crash Recovery and Exit Logic' (Protocol in workflow.md) 812eddb
 
 ## Phase 5: Quality Assurance and Final Checks
-- [ ] Task: Final end-to-end manual verification
+- [x] Task: Final end-to-end manual verification (manual)
     - [ ] Verify first-run setup in a clean environment (delete existing workspace)
     - [ ] Verify normal execution (no log left behind)
     - [ ] Verify crash execution (forced panic, log saved, 5-second wait)
-- [ ] Task: Verify >80% code coverage for new modules
+- [x] Task: Verify >80% code coverage for new modules d0c84d2
     - [ ] Run `go test -cover ./internal/workspace/... ./internal/logger/...`
 - [ ] Task: Conductor - User Manual Verification 'Phase 5: Quality Assurance and Final Checks' (Protocol in workflow.md)
