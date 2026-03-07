@@ -12,6 +12,9 @@ import (
 func main() {
 	// 1. Initialize Workspace with Interactive Setup if needed
 	setupFunc := func() (workspace.Config, error) {
+		// Display welcome message BEFORE the setup form
+		ui.DisplayWelcomeMessage(os.Stdout)
+		
 		res, err := ui.RunFirstRunSetup()
 		if err != nil {
 			return workspace.Config{}, err
@@ -64,11 +67,9 @@ func main() {
 		}
 	}()
 
-	// 4. Welcome Message (if setup was performed, we skip welcome as setup is enough?)
-	// Actually spec says "display a one-time Welcome to magshare message".
-	// Setup is already a "welcome".
+	// 4. Record that we performed setup if needed (isFirstRun is true)
 	if isFirstRun {
-		// ui.DisplayWelcomeMessage(os.Stdout)
+		l.Info("First run setup completed successfully")
 	}
 
 	// 5. Execute Command
