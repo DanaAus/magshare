@@ -23,7 +23,7 @@
 - [x] Task: Integrate "Welcome" message in terminal 1846201
     - [ ] Add `DisplayWelcomeMessage()` in `internal/ui/welcome.go` using `lipgloss` for styling
     - [ ] Write a test/verification to ensure it only prints when `isFirstRun` is true
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: First-Run Logic and Config Creation' (Protocol in workflow.md)
+- [~] Task: Conductor - User Manual Verification 'Phase 2: First-Run Logic and Config Creation' (Protocol in workflow.md)
 
 ## Phase 3: Output Redirection and Logging
 - [ ] Task: Implement Multi-Writer for terminal and log file
