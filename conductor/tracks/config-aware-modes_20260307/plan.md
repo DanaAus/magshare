@@ -1,12 +1,12 @@
 # Implementation Plan: Config-Aware Application Modes
 
-## Phase 1: Configuration Loading Core
+## Phase 1: Configuration Loading Core [checkpoint: dbd85ea]
 - [x] Task: Implement `LoadConfig` in `internal/workspace/config.go` f8ec0c0
     - [ ] Add `LoadConfig(path string) (Config, error)` function.
     - [ ] Implement logic to read the file and unmarshal JSON.
     - [ ] Add basic validation (port range, download dir existence).
     - [ ] Write unit tests in `internal/workspace/config_test.go` for successful loads and corrupted files.
-- [~] Task: Conductor - User Manual Verification 'Phase 1: Configuration Loading Core' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 1: Configuration Loading Core' (Protocol in workflow.md) dbd85ea
 
 ## Phase 2: Root Command Integration
 - [ ] Task: Integrate config loading in `cmd/root.go`
