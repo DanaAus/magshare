@@ -37,6 +37,41 @@ func (pr *ProgressReader) Read(p []byte) (n int, err error) {
 	return n, err
 }
 
+// ProgressReadSeeker wraps an io.ReadSeeker and updates a progress bar as data is read.
+// It is context-aware and will stop reading if the context is cancelled.
+type ProgressReadSeeker struct {
+	rs  io.ReadSeeker
+	bar *progressbar.ProgressBar
+	ctx context.Context
+}
+
+// NewProgressReadSeeker creates a new ProgressReadSeeker with a context.
+func NewProgressReadSeeker(ctx context.Context, rs io.ReadSeeker, bar *progressbar.ProgressBar) *ProgressReadSeeker {
+	return &ProgressReadSeeker{
+		rs:  rs,
+		bar: bar,
+		ctx: ctx,
+	}
+}
+
+// Read implements the io.Reader interface.
+func (prs *ProgressReadSeeker) Read(p []byte) (n int, err error) {
+	if err := prs.ctx.Err(); err != nil {
+		return 0, err
+	}
+
+	n, err = prs.rs.Read(p)
+	if n > 0 {
+		_ = prs.bar.Add(n)
+	}
+	return n, err
+}
+
+// Seek implements the io.Seeker interface.
+func (prs *ProgressReadSeeker) Seek(offset int64, whence int) (int64, error) {
+	return prs.rs.Seek(offset, whence)
+}
+
 // ProgressWriter wraps an io.Writer and updates a progress bar as data is written.
 // It is context-aware and will stop writing if the context is cancelled.
 type ProgressWriter struct {
