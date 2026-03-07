@@ -8,16 +8,16 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Config Struct Update' (Protocol in workflow.md) 5ec3b5c
 
 ## Phase 2: Interactive Setup Implementation
-- [ ] Task: Create `internal/ui/setup.go`
+- [x] Task: Create `internal/ui/setup.go` e1d1e03
     - [ ] Implement `RunFirstRunSetup()` using `huh`.
     - [ ] Logic:
         - Resolve user home directory.
         - Set default path to `filepath.Join(home, "Magshare Downloads")`.
         - Form with Input (Download Path) and Confirm (PIN Security).
         - Validation logic for the path (absolute, writable).
-- [ ] Task: Write tests/mocks for the setup logic
+- [x] Task: Write tests/mocks for the setup logic 6bd27d7
     - [ ] Since TUIs are hard to unit test, focus on validating the path-checking logic in a separate utility.
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Interactive Setup Implementation' (Protocol in workflow.md)
+- [~] Task: Conductor - User Manual Verification 'Phase 2: Interactive Setup Implementation' (Protocol in workflow.md)
 
 ## Phase 3: Integration into Initialization
 - [ ] Task: Update `internal/workspace/init.go`

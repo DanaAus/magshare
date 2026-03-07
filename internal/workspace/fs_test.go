@@ -54,3 +54,28 @@ func TestEnsureDirectoryExists(t *testing.T) {
 		t.Errorf("%q is not a directory", testDir)
 	}
 }
+
+func TestValidateDownloadPath(t *testing.T) {
+	tmpdir, err := os.MkdirTemp("", "validate_test")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer os.RemoveAll(tmpdir)
+
+	cases := []struct {
+		path    string
+		wantErr bool
+	}{
+		{tmpdir, false},                                // Existing absolute path
+		{filepath.Join(tmpdir, "new"), false},          // Non-existing absolute path in writable parent
+		{"relative/path", true},                        // Relative path
+		{"", true},                                     // Empty path
+	}
+
+	for _, tc := range cases {
+		err := ValidateDownloadPath(tc.path)
+		if (err != nil) != tc.wantErr {
+			t.Errorf("ValidateDownloadPath(%q) error = %v, wantErr %v", tc.path, err, tc.wantErr)
+		}
+	}
+}
