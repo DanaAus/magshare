@@ -9,6 +9,7 @@
 *   **Networking:** **Standard net/http** - For a lightweight and performant local web server.
 *   **Logging:** **Custom Structured Logger** - Thread-safe, leveled logging with hybrid terminal/file output and rich metadata.
 *   **Real-time Communication:** **Gorilla WebSocket** - To provide live progress updates and a responsive user experience in the web UI.
+*   **Platform Integration:** **golang.org/x/sys/windows/registry** - For deep integration with the Windows shell context menu.
 *   **QR Rendering:** **mdp/qrterminal** - To display scannable QR codes directly within the terminal.
 
 ## Frontend (Dropzone UI)
