@@ -1,8 +1,0 @@
-{
-  "track_id": "fix_context_menu_error_20260308",
-  "type": "bug",
-  "status": "new",
-  "created_at": "2026-03-08T11:32:00Z",
-  "updated_at": "2026-03-08T11:32:00Z",
-  "description": "Fix 'This is a command line tool' error when launching via Windows Context Menu"
-}
