@@ -17,11 +17,11 @@ This plan follows the TDD workflow and includes platform-specific conditional lo
     - [x] Create `cmd/integrate.go`.
     - [x] Define flags: `--install`, `--uninstall`, `--status`.
     - [x] Implement platform-specific error (exit if not on Windows).
-- [ ] Task: Implement `integrate` logic
-    - [ ] Implement `--install` (calls `workspace.RegisterContextMenu`).
-    - [ ] Implement `--uninstall` (calls `workspace.UnregisterContextMenu`).
-    - [ ] Implement `--status` (verifies registry entries).
-    - [ ] Use `huh` or fmt to provide verbose feedback to the terminal.
+- [x] Task: Implement `integrate` logic (7aea748)
+    - [x] Implement `--install` (calls `workspace.RegisterContextMenu`).
+    - [x] Implement `--uninstall` (calls `workspace.UnregisterContextMenu`).
+    - [x] Implement `--status` (verifies registry entries).
+    - [x] Use `huh` or fmt to provide verbose feedback to the terminal.
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: CLI Command integrate' (Protocol in workflow.md)
 
 ## Phase 3: Robustness and Finalization
