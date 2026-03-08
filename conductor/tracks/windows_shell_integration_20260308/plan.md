@@ -13,10 +13,10 @@ This plan follows the TDD workflow and includes platform-specific conditional lo
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Config Extension and Onboarding' (Protocol in workflow.md) (7e6c027)
 
 ## Phase 2: CLI Command 'integrate'
-- [ ] Task: Scaffolding for `integrate` command
-    - [ ] Create `cmd/integrate.go`.
-    - [ ] Define flags: `--install`, `--uninstall`, `--status`.
-    - [ ] Implement platform-specific error (exit if not on Windows).
+- [x] Task: Scaffolding for `integrate` command (cfb1c3d)
+    - [x] Create `cmd/integrate.go`.
+    - [x] Define flags: `--install`, `--uninstall`, `--status`.
+    - [x] Implement platform-specific error (exit if not on Windows).
 - [ ] Task: Implement `integrate` logic
     - [ ] Implement `--install` (calls `workspace.RegisterContextMenu`).
     - [ ] Implement `--uninstall` (calls `workspace.UnregisterContextMenu`).
