@@ -40,6 +40,9 @@ var rootCmd = &cobra.Command{
 				if err.Error() == "user cancelled" {
 					return nil
 				}
+				l.Error(fmt.Sprintf("Interactive prompts failed: %v", err))
+				fmt.Printf("\nError: %v\nPress Enter to exit...", err)
+				fmt.Scanln()
 				return err
 			}
 

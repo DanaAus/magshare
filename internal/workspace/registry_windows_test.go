@@ -68,8 +68,8 @@ func TestRegisterContextMenu(t *testing.T) {
 			command, _, err := cmdKey.GetStringValue("")
 			if err != nil {
 				t.Errorf("failed to get default value for %s: %v", cmdKeyPath, err)
-			} else if !strings.Contains(command, exePath) || !strings.Contains(command, "send") {
-				t.Errorf("command = %q, want it to contain %q and %q", command, exePath, "send \"%1\"")
+			} else if !strings.Contains(command, exePath) || !strings.Contains(command, `"%1"`) {
+				t.Errorf("command = %q, want it to contain %q and %q", command, exePath, `"%1"`)
 			}
 		})
 	}
