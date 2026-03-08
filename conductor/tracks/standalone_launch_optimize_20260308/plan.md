@@ -24,8 +24,8 @@ This plan focuses on enhancing the interactive mode into a persistent loop and a
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Shortcut Creation' (Protocol in workflow.md) (92e445f)
 
 ## Phase 3: Final Integration and Testing
-- [ ] Task: Verify standalone vs CLI behavior
-    - [ ] Test `magshare send <path>` directly to ensure it still exits as expected.
-    - [ ] Test `magshare` without arguments to verify the loop and exit option.
-    - [ ] Verify the created shortcut launches the program correctly.
+- [x] Task: Verify standalone vs CLI behavior (92e445f)
+    - [x] Test `magshare send <path>` directly to ensure it still exits as expected.
+    - [x] Test `magshare` without arguments to verify the loop and exit option.
+    - [x] Verify the created shortcut launches the program correctly.
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: Final Integration and Testing' (Protocol in workflow.md)
