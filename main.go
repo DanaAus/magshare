@@ -19,10 +19,20 @@ func main() {
 		if err != nil {
 			return workspace.Config{}, err
 		}
+
+		// Perform registration if requested (Windows only)
+		if res.ShellIntegration {
+			if err := workspace.RegisterContextMenu(); err != nil {
+				// We log but don't fail setup
+				fmt.Printf("Warning: Failed to register context menu: %v\n", err)
+			}
+		}
+
 		return workspace.Config{
-			Port:        8080, // Default for now
-			DownloadDir: res.DownloadDir,
-			SecureMode:  res.SecureMode,
+			Port:             8080, // Default for now
+			DownloadDir:      res.DownloadDir,
+			SecureMode:       res.SecureMode,
+			ShellIntegration: res.ShellIntegration,
 		}, nil
 	}
 
