@@ -16,9 +16,9 @@ This plan focuses on investigating the execution guard that blocks context menu 
 - [x] Task: Ensure Argument Handling for Context Menu (cda1f38)
     - [x] Verify that `send "%1"` (the registry command) is correctly parsed by Cobra. (Refactored to use direct path instead)
     - [x] Ensure the interactive loop correctly pre-fills information when a path is passed as an argument.
-- [~] Task: Terminal Persistence
-    - [ ] Ensure that if an error occurs during context-menu launch, the window doesn't close immediately (using the "Press Enter to exit" logic if needed).
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Context Menu Compatibility' (Protocol in workflow.md)
+- [x] Task: Terminal Persistence (33114b7)
+    - [x] Ensure that if an error occurs during context-menu launch, the window doesn't close immediately (using the "Press Enter to exit" logic if needed).
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Context Menu Compatibility' (Protocol in workflow.md) (cda1f38)
 
 ## Phase 3: Final Verification
 - [ ] Task: End-to-End Test
