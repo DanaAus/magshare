@@ -4,6 +4,7 @@ package workspace
 
 import (
 	"fmt"
+	"magshare/internal/logger"
 	"os"
 	"path/filepath"
 	"strings"
@@ -13,13 +14,20 @@ import (
 
 // RegisterContextMenu adds 'Share via Magshare' to the Windows right-click menu for files and directories.
 func RegisterContextMenu() error {
+	log := logger.WithComponent("registry")
+	log.Info("Registering Windows context menu...")
+
 	exePath, err := os.Executable()
 	if err != nil {
-		return fmt.Errorf("failed to get executable path: %w", err)
+		err = fmt.Errorf("failed to get executable path: %w", err)
+		log.Error(err.Error())
+		return err
 	}
 	exePath, err = filepath.Abs(exePath)
 	if err != nil {
-		return fmt.Errorf("failed to get absolute path: %w", err)
+		err = fmt.Errorf("failed to get absolute path: %w", err)
+		log.Error(err.Error())
+		return err
 	}
 
 	// Command: "C:\path\to\magshare.exe" send "%1"
@@ -35,33 +43,45 @@ func RegisterContextMenu() error {
 		// Create/Open the shell key
 		key, _, err := registry.CreateKey(registry.CURRENT_USER, target, registry.ALL_ACCESS)
 		if err != nil {
-			return fmt.Errorf("failed to create registry key %s: %w", target, err)
+			err = fmt.Errorf("failed to create registry key %s: %w", target, err)
+			log.Error(err.Error())
+			return err
 		}
 
 		if err := key.SetStringValue("", menuTitle); err != nil {
 			key.Close()
-			return fmt.Errorf("failed to set menu title for %s: %w", target, err)
+			err = fmt.Errorf("failed to set menu title for %s: %w", target, err)
+			log.Error(err.Error())
+			return err
 		}
 
 		// Create/Open the command subkey
 		cmdKey, _, err := registry.CreateKey(key, "command", registry.ALL_ACCESS)
 		key.Close() // Close parent
 		if err != nil {
-			return fmt.Errorf("failed to create command key for %s: %w", target, err)
+			err = fmt.Errorf("failed to create command key for %s: %w", target, err)
+			log.Error(err.Error())
+			return err
 		}
 
 		if err := cmdKey.SetStringValue("", command); err != nil {
 			cmdKey.Close()
-			return fmt.Errorf("failed to set command for %s: %w", target, err)
+			err = fmt.Errorf("failed to set command for %s: %w", target, err)
+			log.Error(err.Error())
+			return err
 		}
 		cmdKey.Close()
 	}
 
+	log.Info("Successfully registered Windows context menu.")
 	return nil
 }
 
 // UnregisterContextMenu removes Magshare from the Windows right-click menu.
 func UnregisterContextMenu() error {
+	log := logger.WithComponent("registry")
+	log.Info("Unregistering Windows context menu...")
+
 	targets := []string{
 		`Software\Classes\*\shell\Magshare`,
 		`Software\Classes\Directory\shell\Magshare`,
@@ -69,7 +89,10 @@ func UnregisterContextMenu() error {
 
 	for _, target := range targets {
 		// First, delete the "command" subkey
-		_ = registry.DeleteKey(registry.CURRENT_USER, target+`\command`)
+		err := registry.DeleteKey(registry.CURRENT_USER, target+`\command`)
+		if err != nil && err != registry.ErrNotExist {
+			log.Warn(fmt.Sprintf("failed to delete command key for %s: %v", target, err))
+		}
 
 		// Now delete the Magshare key itself
 		lastSlash := strings.LastIndex(target, `\`)
@@ -81,11 +104,19 @@ func UnregisterContextMenu() error {
 
 		parentKey, err := registry.OpenKey(registry.CURRENT_USER, parentPath, registry.ALL_ACCESS)
 		if err != nil {
+			if err != registry.ErrNotExist {
+				log.Warn(fmt.Errorf("failed to open parent key %s: %w", parentPath, err).Error())
+			}
 			continue
 		}
-		_ = registry.DeleteKey(parentKey, childName)
+		
+		err = registry.DeleteKey(parentKey, childName)
 		parentKey.Close()
+		if err != nil && err != registry.ErrNotExist {
+			log.Warn(fmt.Sprintf("failed to delete registry key %s: %v", target, err))
+		}
 	}
 
+	log.Info("Successfully unregistered Windows context menu.")
 	return nil
 }
