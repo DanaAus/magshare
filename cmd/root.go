@@ -93,6 +93,9 @@ func Execute() error {
 func init() {
 	cobra.OnInitialize(initConfig)
 
+	// Disable Mousetrap popup to allow direct launch and context menu execution on Windows
+	cobra.MousetrapHelpText = ""
+
 	// Global flags can go here
 	rootCmd.PersistentFlags().BoolVarP(&demoMode, "demo", "", false, "Enable demo mode with fake connection information")
 	rootCmd.PersistentFlags().IntVarP(&portFlag, "port", "p", 0, "Custom port for the server")
