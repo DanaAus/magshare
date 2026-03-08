@@ -12,12 +12,13 @@ var (
 	installFlag   bool
 	uninstallFlag bool
 	statusFlag    bool
+	shortcutFlag  bool
 )
 
 var integrateCmd = &cobra.Command{
 	Use:   "integrate",
-	Short: "Manage Windows Explorer context menu integration",
-	Long:  `Manage the 'Share via Magshare' option in the Windows right-click context menu.`,
+	Short: "Manage Windows Explorer context menu and shortcuts",
+	Long:  `Manage the 'Share via Magshare' option in the Windows right-click context menu and Desktop shortcuts.`,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		if runtime.GOOS != "windows" {
 			return fmt.Errorf("explorer integration is only supported on Windows")
@@ -38,6 +39,15 @@ var integrateCmd = &cobra.Command{
 				return fmt.Errorf("failed to remove integration: %w", err)
 			}
 			fmt.Println("Successfully removed 'Share via Magshare' from context menu.")
+			return nil
+		}
+
+		if shortcutFlag {
+			fmt.Println("Creating Desktop shortcut...")
+			if err := workspace.CreateDesktopShortcut(); err != nil {
+				return fmt.Errorf("failed to create shortcut: %w", err)
+			}
+			fmt.Println("Successfully created Magshare shortcut on Desktop.")
 			return nil
 		}
 
@@ -63,4 +73,5 @@ func init() {
 	integrateCmd.Flags().BoolVar(&installFlag, "install", false, "Add 'Share via Magshare' to Windows right-click menu")
 	integrateCmd.Flags().BoolVar(&uninstallFlag, "uninstall", false, "Remove 'Share via Magshare' from Windows right-click menu")
 	integrateCmd.Flags().BoolVar(&statusFlag, "status", false, "Check if Windows context menu is integrated")
+	integrateCmd.Flags().BoolVar(&shortcutFlag, "shortcut", false, "Create a Desktop shortcut for Magshare")
 }
