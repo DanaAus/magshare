@@ -12,7 +12,7 @@ This plan follows the TDD workflow and includes platform-specific conditional lo
     - [x] Update `main.go` to call `workspace.RegisterContextMenu()` if the user opts-in during setup.
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Config Extension and Onboarding' (Protocol in workflow.md) (7e6c027)
 
-## Phase 2: CLI Command 'integrate'
+## Phase 2: CLI Command 'integrate' [checkpoint: 7aea748]
 - [x] Task: Scaffolding for `integrate` command (cfb1c3d)
     - [x] Create `cmd/integrate.go`.
     - [x] Define flags: `--install`, `--uninstall`, `--status`.
@@ -22,7 +22,7 @@ This plan follows the TDD workflow and includes platform-specific conditional lo
     - [x] Implement `--uninstall` (calls `workspace.UnregisterContextMenu`).
     - [x] Implement `--status` (verifies registry entries).
     - [x] Use `huh` or fmt to provide verbose feedback to the terminal.
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: CLI Command integrate' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: CLI Command integrate' (Protocol in workflow.md) (7aea748)
 
 ## Phase 3: Robustness and Finalization
 - [ ] Task: Verify end-to-end flow
