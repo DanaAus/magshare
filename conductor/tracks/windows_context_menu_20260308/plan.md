@@ -3,10 +3,10 @@
 This plan follows the Test-Driven Development (TDD) workflow and includes phase completion verification.
 
 ## Phase 1: Scaffolding and Interface Definition
-- [ ] Task: Define the registry interface and stubs
-    - [ ] Create `internal/workspace/registry_windows.go` with `//go:build windows`
-    - [ ] Create `internal/workspace/registry_stub.go` with `//go:build !windows`
-    - [ ] Define `RegisterContextMenu() error` and `UnregisterContextMenu() error` signatures
+- [x] Task: Define the registry interface and stubs (847e635)
+    - [x] Create `internal/workspace/registry_windows.go` with `//go:build windows`
+    - [x] Create `internal/workspace/registry_stub.go` with `//go:build !windows`
+    - [x] Define `RegisterContextMenu() error` and `UnregisterContextMenu() error` signatures
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Scaffolding and Interface Definition' (Protocol in workflow.md)
 
 ## Phase 2: Registration Logic (TDD)
