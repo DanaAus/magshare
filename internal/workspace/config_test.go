@@ -17,9 +17,10 @@ func TestCreateDefaultConfig(t *testing.T) {
 	configPath := filepath.Join(tmpdir, "config.json")
 
 	expectedConfig := Config{
-		Port:        9090,
-		SecureMode:  true,
-		DownloadDir: tmpdir, // Use existing dir for validation
+		Port:             9090,
+		SecureMode:       true,
+		DownloadDir:      tmpdir, // Use existing dir for validation
+		ShellIntegration: true,
 	}
 
 	err = CreateDefaultConfig(configPath, expectedConfig)
@@ -52,6 +53,9 @@ func TestCreateDefaultConfig(t *testing.T) {
 	}
 	if actualConfig.DownloadDir != expectedConfig.DownloadDir {
 		t.Errorf("DownloadDir = %q, want %q", actualConfig.DownloadDir, expectedConfig.DownloadDir)
+	}
+	if actualConfig.ShellIntegration != expectedConfig.ShellIntegration {
+		t.Errorf("ShellIntegration = %v, want %v", actualConfig.ShellIntegration, expectedConfig.ShellIntegration)
 	}
 }
 

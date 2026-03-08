@@ -8,10 +8,11 @@ import (
 
 // Config represents the magshare configuration.
 type Config struct {
-	Port        int    `json:"port"`
-	SecureMode  bool   `json:"secure_mode"`
-	PIN         string `json:"pin,omitempty"`
-	DownloadDir string `json:"download_dir"`
+	Port             int    `json:"port"`
+	SecureMode       bool   `json:"secure_mode"`
+	PIN              string `json:"pin,omitempty"`
+	DownloadDir      string `json:"download_dir"`
+	ShellIntegration bool   `json:"shell_integration"`
 }
 
 // CreateDefaultConfig creates a configuration file at the specified path with the given config.
